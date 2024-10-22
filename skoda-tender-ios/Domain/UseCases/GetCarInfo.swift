@@ -1,5 +1,5 @@
 //
-//  GetMessages.swift
+//  GetCarInfo.swift
 //  skoda-tender-ios
 //
 //  Created by Sergio Cagica on 22/10/2024.
@@ -23,10 +23,9 @@ protocol GetCarsInfoProtocol {
 
 struct GetCarInfoUseCase: GetCarsInfoProtocol {
     var repository: CarRepository
-    
-    
+
     func execute() -> Result<[Car], UseCaseError> {
         let cars = repository.getCarInfo()
         return .success(cars)
     }
-} 
+}

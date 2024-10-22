@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		C6D69D552CC7FBBE0048B5CA /* .swiftformat in Resources */ = {isa = PBXBuildFile; fileRef = C6D69D542CC7FBB80048B5CA /* .swiftformat */; };
+		C6D69D572CC7FC3A0048B5CA /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = C6D69D562CC7FC3A0048B5CA /* .gitignore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		C6A3B7E72CC7A348007E61C9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +32,8 @@
 		C6A3B7D32CC7A344007E61C9 /* skoda-tender-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "skoda-tender-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6A3B7E62CC7A348007E61C9 /* skoda-tender-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "skoda-tender-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6A3B7F02CC7A348007E61C9 /* skoda-tender-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "skoda-tender-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6D69D542CC7FBB80048B5CA /* .swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftformat; sourceTree = "<group>"; };
+		C6D69D562CC7FC3A0048B5CA /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +82,8 @@
 		C6A3B7CA2CC7A344007E61C9 = {
 			isa = PBXGroup;
 			children = (
+				C6D69D562CC7FC3A0048B5CA /* .gitignore */,
+				C6D69D542CC7FBB80048B5CA /* .swiftformat */,
 				C6A3B7D52CC7A344007E61C9 /* skoda-tender-ios */,
 				C6A3B7E92CC7A348007E61C9 /* skoda-tender-iosTests */,
 				C6A3B7F32CC7A348007E61C9 /* skoda-tender-iosUITests */,
@@ -212,6 +221,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6D69D572CC7FC3A0048B5CA /* .gitignore in Resources */,
+				C6D69D552CC7FBBE0048B5CA /* .swiftformat in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

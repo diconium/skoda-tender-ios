@@ -1,26 +1,18 @@
-//
-//  MessageListView.swift
-//  skoda-tender-ios
-//
-//  Created by Sergio Cagica on 22/10/2024.
-//
-
 import Foundation
 import SwiftUI
 
-struct MessageListView: View {
-    
-    @StateObject var viewModel = MessageListViewModel()
-    
+struct ProfileListView: View {
+    @StateObject var viewModel = Pro()
+
     var body: some View {
         VStack {
             Text("Messages: ")
-            List(viewModel.messages) { message in
-                Text(message.text)
+            List(viewModel.cars) { cars in
+                Text(cars.text)
             }
         }
         .task {
-            viewModel.getMessages()
+            viewModel.getCarInfo()
         }
     }
 }
@@ -43,21 +35,20 @@ struct MessageListView: View {
 /// - Returns: A greeting for the given `subject`.
 ///
 
-class MessageListViewModel: ObservableObject {
-    
+class ProfileListViewModel: ObservableObject {
     // 2
-    var getMessagesUseCase = GetMessagesUseCase(repository: MessageRepositoryImpl(dataSource: MessageDataSourceImpl()))
-    
+    var getCarInfoUseCase = GetCarInfoUseCase(repository: CarRepositoryImpl(dataSource: CarDataSourceImpl()))
+
     // 3
-    @Published var messages: [Message] = []
-    
+    @Published var cars: [Car] = []
+
     // 4
-    func getMessages() {
-        let result = getMessagesUseCase.execute()
+    func getCarInfo() {
+        let result = getCarInfoUseCase.execute()
         switch result {
-        case .success(let messages):
-            self.messages = messages
-        case .failure(let error):
+        case let .success(cars):
+            self.cars = cars
+        case let .failure(error):
             print(error)
         }
     }

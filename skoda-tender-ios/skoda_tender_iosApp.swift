@@ -5,8 +5,8 @@
 //  Created by Sergio Cagica on 22/10/2024.
 //
 
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 @main
 struct skoda_tender_iosApp: App {

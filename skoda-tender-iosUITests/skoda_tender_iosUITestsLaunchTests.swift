@@ -8,7 +8,6 @@
 import XCTest
 
 final class skoda_tender_iosUITestsLaunchTests: XCTestCase {
-
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
     }
