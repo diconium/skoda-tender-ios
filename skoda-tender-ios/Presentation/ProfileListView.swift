@@ -2,13 +2,13 @@ import Foundation
 import SwiftUI
 
 struct ProfileListView: View {
-    @StateObject var viewModel = Pro()
+    @StateObject var viewModel = ProfileListViewModel()
 
     var body: some View {
         VStack {
             Text("Messages: ")
-            List(viewModel.cars) { cars in
-                Text(cars.text)
+            List(viewModel.cars) { car in
+                Text(car.text)
             }
         }
         .task {
