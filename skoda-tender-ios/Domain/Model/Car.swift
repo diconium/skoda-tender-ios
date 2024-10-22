@@ -6,7 +6,9 @@
 //
 
 import Foundation
+import SwiftData
 
+@Model
 struct Car: Identifiable {
     let id: Int
     let vin: String

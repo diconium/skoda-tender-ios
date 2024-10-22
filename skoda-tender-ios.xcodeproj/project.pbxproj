@@ -9,6 +9,15 @@
 /* Begin PBXBuildFile section */
 		C6D69D552CC7FBBE0048B5CA /* .swiftformat in Resources */ = {isa = PBXBuildFile; fileRef = C6D69D542CC7FBB80048B5CA /* .swiftformat */; };
 		C6D69D572CC7FC3A0048B5CA /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = C6D69D562CC7FC3A0048B5CA /* .gitignore */; };
+		C6D69D5D2CC84C0E0048B5CA /* SKODANext-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D69D5C2CC84C0E0048B5CA /* SKODANext-Regular.ttf */; };
+		C6D69D5F2CC84C1A0048B5CA /* SKODANext-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D69D5E2CC84C1A0048B5CA /* SKODANext-LightItalic.ttf */; };
+		C6D69D612CC84C1F0048B5CA /* SKODANext-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D69D602CC84C1F0048B5CA /* SKODANext-Light.ttf */; };
+		C6D69D632CC84C250048B5CA /* SKODANext-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D69D622CC84C250048B5CA /* SKODANext-Italic.ttf */; };
+		C6D69D652CC84C2B0048B5CA /* SKODANext-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D69D642CC84C2B0048B5CA /* SKODANext-BoldItalic.ttf */; };
+		C6D69D672CC84C300048B5CA /* SKODANext-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D69D662CC84C300048B5CA /* SKODANext-Bold.ttf */; };
+		C6D69D692CC84C360048B5CA /* SKODANext-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D69D682CC84C360048B5CA /* SKODANext-BlackItalic.ttf */; };
+		C6D69D6B2CC84C3B0048B5CA /* SKODANext-BlackExpanded.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D69D6A2CC84C3B0048B5CA /* SKODANext-BlackExpanded.ttf */; };
+		C6D69D6D2CC84C3F0048B5CA /* SKODANext-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D69D6C2CC84C3F0048B5CA /* SKODANext-Black.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,11 +43,33 @@
 		C6A3B7F02CC7A348007E61C9 /* skoda-tender-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "skoda-tender-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6D69D542CC7FBB80048B5CA /* .swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftformat; sourceTree = "<group>"; };
 		C6D69D562CC7FC3A0048B5CA /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		C6D69D5C2CC84C0E0048B5CA /* SKODANext-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SKODANext-Regular.ttf"; sourceTree = "<group>"; };
+		C6D69D5E2CC84C1A0048B5CA /* SKODANext-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SKODANext-LightItalic.ttf"; sourceTree = "<group>"; };
+		C6D69D602CC84C1F0048B5CA /* SKODANext-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SKODANext-Light.ttf"; sourceTree = "<group>"; };
+		C6D69D622CC84C250048B5CA /* SKODANext-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SKODANext-Italic.ttf"; sourceTree = "<group>"; };
+		C6D69D642CC84C2B0048B5CA /* SKODANext-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SKODANext-BoldItalic.ttf"; sourceTree = "<group>"; };
+		C6D69D662CC84C300048B5CA /* SKODANext-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SKODANext-Bold.ttf"; sourceTree = "<group>"; };
+		C6D69D682CC84C360048B5CA /* SKODANext-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SKODANext-BlackItalic.ttf"; sourceTree = "<group>"; };
+		C6D69D6A2CC84C3B0048B5CA /* SKODANext-BlackExpanded.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SKODANext-BlackExpanded.ttf"; sourceTree = "<group>"; };
+		C6D69D6C2CC84C3F0048B5CA /* SKODANext-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SKODANext-Black.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		C6D69D6F2CC84D060048B5CA /* Exceptions for "skoda-tender-ios" folder in "skoda-tender-ios" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = C6A3B7D22CC7A344007E61C9 /* skoda-tender-ios */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		C6A3B7D52CC7A344007E61C9 /* skoda-tender-ios */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				C6D69D6F2CC84D060048B5CA /* Exceptions for "skoda-tender-ios" folder in "skoda-tender-ios" target */,
+			);
 			path = "skoda-tender-ios";
 			sourceTree = "<group>";
 		};
@@ -82,6 +113,7 @@
 		C6A3B7CA2CC7A344007E61C9 = {
 			isa = PBXGroup;
 			children = (
+				C6D69D5B2CC8402E0048B5CA /* Fonts */,
 				C6D69D562CC7FC3A0048B5CA /* .gitignore */,
 				C6D69D542CC7FBB80048B5CA /* .swiftformat */,
 				C6A3B7D52CC7A344007E61C9 /* skoda-tender-ios */,
@@ -99,6 +131,22 @@
 				C6A3B7F02CC7A348007E61C9 /* skoda-tender-iosUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C6D69D5B2CC8402E0048B5CA /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				C6D69D5C2CC84C0E0048B5CA /* SKODANext-Regular.ttf */,
+				C6D69D5E2CC84C1A0048B5CA /* SKODANext-LightItalic.ttf */,
+				C6D69D602CC84C1F0048B5CA /* SKODANext-Light.ttf */,
+				C6D69D622CC84C250048B5CA /* SKODANext-Italic.ttf */,
+				C6D69D642CC84C2B0048B5CA /* SKODANext-BoldItalic.ttf */,
+				C6D69D662CC84C300048B5CA /* SKODANext-Bold.ttf */,
+				C6D69D682CC84C360048B5CA /* SKODANext-BlackItalic.ttf */,
+				C6D69D6A2CC84C3B0048B5CA /* SKODANext-BlackExpanded.ttf */,
+				C6D69D6C2CC84C3F0048B5CA /* SKODANext-Black.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,8 +269,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6D69D6D2CC84C3F0048B5CA /* SKODANext-Black.ttf in Resources */,
+				C6D69D692CC84C360048B5CA /* SKODANext-BlackItalic.ttf in Resources */,
 				C6D69D572CC7FC3A0048B5CA /* .gitignore in Resources */,
+				C6D69D672CC84C300048B5CA /* SKODANext-Bold.ttf in Resources */,
+				C6D69D5F2CC84C1A0048B5CA /* SKODANext-LightItalic.ttf in Resources */,
+				C6D69D632CC84C250048B5CA /* SKODANext-Italic.ttf in Resources */,
+				C6D69D6B2CC84C3B0048B5CA /* SKODANext-BlackExpanded.ttf in Resources */,
+				C6D69D652CC84C2B0048B5CA /* SKODANext-BoldItalic.ttf in Resources */,
 				C6D69D552CC7FBBE0048B5CA /* .swiftformat in Resources */,
+				C6D69D612CC84C1F0048B5CA /* SKODANext-Light.ttf in Resources */,
+				C6D69D5D2CC84C0E0048B5CA /* SKODANext-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +464,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "skoda-tender-ios/Info.plist";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -446,6 +504,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "skoda-tender-ios/Info.plist";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
