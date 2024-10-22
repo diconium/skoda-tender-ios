@@ -1,0 +1,25 @@
+name: format, lint, build and test
+
+on:
+pull_request:
+  branches:
+  - main
+
+jobs:
+  build_project:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: SwiftFormat
+        run: swiftformat . --lint
+      - name: SwiftLint
+        run: swiftlint lint --strict
+      - name: Build and Test
+        run: |
+          xcodebuild \
+           -project skoda-tender-ios \
+           -scheme skoda-tender-ios \
+           -sdk iphonesimulator \
+           -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.2' \
+            test || exit 1

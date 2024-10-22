@@ -6,9 +6,17 @@
 //
 
 import Foundation
+import SwiftData
 
-struct Car: Identifiable {
-    let id: Int
-    let vin: String
-    let text: String
+@Model
+final class Car {
+    var id: Int
+    var vin: String
+    var text: String
+
+    init(id: Int, vin: String, text: String) {
+        self.id = id
+        self.vin = vin
+        self.text = text
+    }
 }
