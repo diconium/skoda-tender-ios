@@ -62,7 +62,24 @@
 			);
 			target = C6A3B7D22CC7A344007E61C9 /* skoda-tender-ios */;
 		};
+		C6D69D772CC862B90048B5CA /* Exceptions for ".github" folder in "skoda-tender-ios" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				workflows/build.yml,
+			);
+			target = C6A3B7D22CC7A344007E61C9 /* skoda-tender-ios */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		C6D69D782CC862B90048B5CA /* Exceptions for ".github" folder in "Compile Sources" phase from "skoda-tender-ios" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = C6A3B7CF2CC7A344007E61C9 /* Sources */;
+			membershipExceptions = (
+				workflows/build.yml,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		C6A3B7D52CC7A344007E61C9 /* skoda-tender-ios */ = {
@@ -81,6 +98,15 @@
 		C6A3B7F32CC7A348007E61C9 /* skoda-tender-iosUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "skoda-tender-iosUITests";
+			sourceTree = "<group>";
+		};
+		C6D69D722CC862830048B5CA /* .github */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				C6D69D772CC862B90048B5CA /* Exceptions for ".github" folder in "skoda-tender-ios" target */,
+				C6D69D782CC862B90048B5CA /* Exceptions for ".github" folder in "Compile Sources" phase from "skoda-tender-ios" target */,
+			);
+			path = .github;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -113,6 +139,7 @@
 		C6A3B7CA2CC7A344007E61C9 = {
 			isa = PBXGroup;
 			children = (
+				C6D69D722CC862830048B5CA /* .github */,
 				C6D69D5B2CC8402E0048B5CA /* Fonts */,
 				C6D69D562CC7FC3A0048B5CA /* .gitignore */,
 				C6D69D542CC7FBB80048B5CA /* .swiftformat */,
@@ -166,6 +193,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				C6A3B7D52CC7A344007E61C9 /* skoda-tender-ios */,
+				C6D69D722CC862830048B5CA /* .github */,
 			);
 			name = "skoda-tender-ios";
 			packageProductDependencies = (

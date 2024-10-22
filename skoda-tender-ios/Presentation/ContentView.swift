@@ -17,7 +17,7 @@ struct ContentView: View {
             ForEach(items, id: \.self) { item in
                 VStack {
                     Spacer()
-                    Text(item.text).font(.custom("SKODANext-Regular", size: 36)).foregroundStyle(.white)
+                    CarView()
                     Divider()
                     Spacer()
                 }
