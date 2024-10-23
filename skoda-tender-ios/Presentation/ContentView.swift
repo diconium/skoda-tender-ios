@@ -14,7 +14,6 @@ struct ContentView: View {
 
     var body: some View {
         TabView {
-            apiCallTest()
             ForEach(items, id: \.self) { item in
 
                 VStack {
@@ -30,28 +29,6 @@ struct ContentView: View {
                 }
             }
         }
-    }
-
-    private func apiCallTest() -> some View {
-        let statusDataSourceImpl = StatusDataSourceImpl()
-        let carStatusRepositoryImpl = CarStatusRepositoryImpl(dataSource: statusDataSourceImpl)
-        let useCase = GetCarInfoUseCase(repository: carStatusRepositoryImpl)
-
-        useCase.execute { useCaseResult in
-
-            switch useCaseResult {
-
-            case .success(let useCaseData):
-                var asd = useCaseData
-                let asdew = "asdsad"
-
-
-            case .failure(let useCaseError):
-                let asdsad = "asdsad"
-            }
-        }
-
-        return Text("Tab2")
     }
 }
 

@@ -8,11 +8,15 @@
 // MARK: - Subscription
 
 struct SubscriptionDataModel: Codable, Sendable {
-    let id: Int?
-    let name, description: String?
+    
+    let id: Int
+    let name: String
+    let description: String?
     let imageLink: String?
-    let length: Int?
-    let price: Double?
+    let length: Int
+    let price: Double
     let includedServices: [IncludedServiceDataModel]?
-    let status, startDate, endDate: String?
+    let status: String
+    let startDate: String
+    let endDate: String?
 }

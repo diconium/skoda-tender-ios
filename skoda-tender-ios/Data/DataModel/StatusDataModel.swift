@@ -11,6 +11,6 @@ import Alamofire
 struct StatusDataModel: Codable, Sendable {
 
     let user: UserDataModel
-    let car: CarDataModel
-    let subscriptions: [SubscriptionDataModel]
+    let car: CarDataModel?
+    let subscriptions: [SubscriptionDataModel]?
 }

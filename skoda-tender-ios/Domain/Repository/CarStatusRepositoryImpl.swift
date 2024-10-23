@@ -13,11 +13,5 @@ struct CarStatusRepositoryImpl: CarStatusRepository {
     func getCarStatus(completionHandler: @escaping NetworkDataResponseHandler) -> Void {
 
         dataSource.getCarStatus(completionHandler: completionHandler)
-//        } catch {
-//
-//            print("Failed to get car status: \(error.localizedDescription)")
-//
-//            return nil
-//        }
     }
 }
