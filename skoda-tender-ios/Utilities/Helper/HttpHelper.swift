@@ -93,11 +93,12 @@ class HttpHelper {
                      encoding: ParameterEncoding = URLEncoding.default,
                      headers: HTTPHeaders? = nil,
                      completionHandler: @escaping (AFDataResponse<Data?>) -> Void)
-    { alomafireSession.request(urlConvertible,
-                               method: method,
-                               parameters: parameters,
-                               encoding: encoding,
-                               headers: headers).response(completionHandler: completionHandler)
+    {
+        alomafireSession.request(urlConvertible,
+                                 method: method,
+                                 parameters: parameters,
+                                 encoding: encoding,
+                                 headers: headers).response(completionHandler: completionHandler)
     }
 
     func makeRequest(_ urlRequest: URLRequest, completionHandler: @escaping (AFDataResponse<Data?>) -> Void) {
