@@ -25,6 +25,8 @@ jobs:
     runs-on: macos-latest
     needs: [lint]
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
       - name: Selecting Xcode Version
         run: sudo xcode-select -switch /Applications/Xcode_16.app
       - name: Pre-warm emulator
