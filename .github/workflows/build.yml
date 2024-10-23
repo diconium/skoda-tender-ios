@@ -21,10 +21,12 @@ jobs:
         run: brew install swiftlint
       - name: SwiftLint
         run: swiftlint lint --strict
-        
-  pre-warm:
+  test:
     runs-on: macos-latest
+    needs: [lint]
     steps:
+      - name: Selecting Xcode Version
+        run: sudo xcode-select -switch /Applications/Xcode_16.app
       - name: Pre-warm emulator
         id: pre-warm
         uses: futureware-tech/simulator-action@v3
@@ -32,24 +34,10 @@ jobs:
             model: 'iPhone 15 Pro Max'
             os_version: '18.1'
             os: 'iOS'
-    outputs:
-        id: ${{ steps.pre-warm.outputs.udid }}
-  build:
-    runs-on: macos-latest
-    needs: [pre-warm, lint]
-    steps:
-      - name: Selecting Xcode Version
-        run: sudo xcode-select -switch /Applications/Xcode_16.app
-      - name: Pre-warm emulator
-        uses: futureware-tech/simulator-action@v3
-        with:
-          model: 'iPhone 16 Pro Max'
-          os_version: '18.0'
-          os: 'iOS'
       - name: Build Cleanup
         run: |
           xcodebuild clean -project skoda-tender-ios.xcodeproj -scheme skoda-tender-ios | xcpretty && exit ${PIPESTATUS[0]}
       - name: Build Test
         run: |
-          xcodebuild test -project skoda-tender-ios.xcodeproj -scheme skoda-tender-ios -destination 'platform=iOS,id=${{needs.pre-warm.outputs.id}}' | xcpretty -s && exit ${PIPESTATUS[0]}
+          xcodebuild test -project skoda-tender-ios.xcodeproj -scheme skoda-tender-ios -destination 'platform=iOS,id=${{ steps.pre-warm.outputs.udid }}' | xcpretty -s && exit ${PIPESTATUS[0]}
 
