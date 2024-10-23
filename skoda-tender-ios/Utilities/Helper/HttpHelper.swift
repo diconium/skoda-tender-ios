@@ -12,7 +12,7 @@ import SystemConfiguration
 class HttpHelper {
     public enum HTTPCode {
         public static let NetworkNotFound = -1
-        public static let OK = 200
+        public static let Success = 200
         public static let Created = 201
         public static let Accepted = 202
         public static let NotAuthoritative = 203

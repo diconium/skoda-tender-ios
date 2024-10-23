@@ -1,27 +1,45 @@
 name: format, lint, build and test
 
 on:
+    workflow_dispatch:
+    push:
+        branches:
+        - main
     pull_request:
-      branches:
-      - main
+        branches:
+         main
 
 jobs:
-  build_project:
+  lint:
     runs-on: macos-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-      - name: Install packages
-        run: swift package install
       - name: SwiftFormat
         run: swiftformat . --lint
+      - name: Install SwiftLint
+        run: brew install swiftlint
       - name: SwiftLint
         run: swiftlint lint --strict
-      - name: Build and Test
+  test:
+    runs-on: macos-latest
+    needs: [lint]
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Selecting Xcode Version
+        run: sudo xcode-select -switch /Applications/Xcode_16.app
+      - name: Pre-warm emulator
+        id: pre-warm
+        uses: futureware-tech/simulator-action@v3
+        with:
+            model: 'iPhone 15 Pro Max'
+            os_version: '18.1'
+            os: 'iOS'
+      - name: Build Cleanup
         run: |
-          xcodebuild \
-           -project skoda-tender-ios \
-           -scheme skoda-tender-ios \
-           -sdk iphonesimulator \
-           -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.2' \
-            test || exit 1
+          xcodebuild clean -project skoda-tender-ios.xcodeproj -scheme skoda-tender-ios | xcpretty && exit ${PIPESTATUS[0]}
+      - name: Build Test
+        run: |
+          xcodebuild test -project skoda-tender-ios.xcodeproj -scheme skoda-tender-ios -destination 'platform=iOS,id=${{ steps.pre-warm.outputs.udid }}' | xcpretty -s
+
