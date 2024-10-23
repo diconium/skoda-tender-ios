@@ -7,49 +7,37 @@ struct ProfileListView: View {
     var body: some View {
         VStack {
             Text("Messages: ")
-            List(viewModel.cars) { car in
+            List(viewModel.carModelList) { car in
                 Text(car.text)
             }
         }
-        .task {
+            .task {
             viewModel.getCarInfo()
         }
     }
 }
 
-// MARK: View
-
-/// Produce a greeting string for the given `subject`.
-///
-/// ```
-/// print(hello("world")) // "Hello, world!"
-/// ```
-///
-/// > Warning: The returned greeting is not localized. To
-/// > produce a localized string, use ``localizedHello(_:)``
-/// > instead.
-///
-/// - Parameters:
-///     - subject: The subject to be welcomed.
-///
-/// - Returns: A greeting for the given `subject`.
-///
-
 class ProfileListViewModel: ObservableObject {
-    // 2
-    var getCarInfoUseCase = GetCarInfoUseCase(repository: CarRepositoryImpl(dataSource: CarDataSourceImpl()))
+    let getCarInfoUseCase: GetCarInfoUseCase = {
+        let statusDataSourceImpl = StatusDataSourceImpl()
+        let carStatusRepositoryImpl = StatusRepositoryImpl(dataSource: statusDataSourceImpl)
 
-    // 3
-    @Published var cars: [Car] = []
+        return GetCarInfoUseCase(repository: carStatusRepositoryImpl)
+    }()
 
-    // 4
+    @Published var carModelList: [CarModel] = []
+
     func getCarInfo() {
-        let result = getCarInfoUseCase.execute()
-        switch result {
-        case let .success(cars):
-            self.cars = cars
-        case let .failure(error):
-            print(error)
+        getCarInfoUseCase.execute { useCaseResult in
+
+            switch useCaseResult {
+
+            case .success(let useCaseData):
+                break // TODO(Sergio): Handle the data on UI
+
+            case .failure(let useCaseError):
+                break // TODO(Sergio): Handle the error on UI
+            }
         }
     }
 }
