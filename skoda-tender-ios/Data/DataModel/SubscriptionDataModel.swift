@@ -1,13 +1,13 @@
 //
-//  Subscription.swift
+//  SubscriptionDataModel.swift
 //  skoda-tender-ios
 //
 //  Created by Fábio Barreiros on 23/10/2024.
 //
 
 // MARK: - Subscription
-struct SubscriptionDataModel: Codable, Sendable {
 
+struct SubscriptionDataModel: Codable, Sendable {
     let id: Int?
     let name, description: String?
     let imageLink: String?
@@ -16,7 +16,3 @@ struct SubscriptionDataModel: Codable, Sendable {
     let includedServices: [IncludedServiceDataModel]?
     let status, startDate, endDate: String?
 }
-
-
-
-

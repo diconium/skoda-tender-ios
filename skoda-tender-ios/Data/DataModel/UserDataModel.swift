@@ -6,8 +6,8 @@
 //
 
 // MARK: - User
-struct UserDataModel: Codable, Sendable {
 
+struct UserDataModel: Codable, Sendable {
     let id: Int?
     let email, name: String?
 }

@@ -6,8 +6,8 @@
 //
 
 // MARK: - IncludedService
-struct IncludedServiceDataModel: Codable, Sendable {
 
+struct IncludedServiceDataModel: Codable, Sendable {
     let id: Int?
     let name, description: String?
     let imageLink: String?

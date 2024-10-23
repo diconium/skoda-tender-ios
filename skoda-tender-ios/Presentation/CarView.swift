@@ -2,6 +2,12 @@ import SwiftData
 import SwiftUI
 
 struct CarView: View {
+    private let items: [String] = [
+        "test",
+        "test",
+        "test",
+    ]
+
     var body: some View {
         VStack {
             Spacer(minLength: 300)
@@ -15,41 +21,27 @@ struct CarView: View {
                     Text("First Row")
                         .font(.custom("SKODANext-Light", size: 16))
                         .foregroundStyle(.white)
-                        .padding(10)
-                        .background(.neutral900)
+                        .padding(12)
+                        .background(.neutral800)
                         .cornerRadius(25)
                     Text("Second Row").font(.custom("SKODANext-Light", size: 16))
                         .foregroundStyle(.white)
                         .foregroundStyle(.white)
-                        .padding(10)
-                        .background(.neutral900)
+                        .padding(12)
+                        .background(.neutral800)
                         .cornerRadius(25)
                     Text("Third Row").font(.custom("SKODANext-Light", size: 16))
                         .foregroundStyle(.white)
-                        .padding(10)
-                        .background(.neutral900)
+                        .padding(12)
+                        .background(.neutral800)
                         .cornerRadius(25)
                 }
             }
             ScrollView(.horizontal) {
                 LazyHStack {
-                    Text("First Row")
-                        .font(.custom("SKODANext-Bold", size: 22))
-                        .foregroundStyle(.white)
-                        .padding()
-                        .background(.electric600)
-                        .cornerRadius(25)
-                    Text("Second Row").font(.custom("SKODANext-Bold", size: 22))
-                        .foregroundStyle(.white)
-                        .foregroundStyle(.white)
-                        .padding()
-                        .background(.electric600)
-                        .cornerRadius(25)
-                    Text("Third Row").font(.custom("SKODANext-Bold", size: 22))
-                        .foregroundStyle(.white)
-                        .padding()
-                        .background(.electric600)
-                        .cornerRadius(25)
+                    CardView()
+                    CardView()
+                    CardView()
                 }
             }
         }.padding(20)

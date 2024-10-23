@@ -6,8 +6,8 @@
 //
 
 // MARK: - Status
-struct StatusDataModel: Codable, Sendable {
 
+struct StatusDataModel: Codable, Sendable {
     let user: UserDataModel?
     let car: CarDataModel?
     let subscriptions: [SubscriptionDataModel]?
