@@ -12,7 +12,7 @@ import SystemConfiguration
 class HttpHelper {
     public enum HTTPCode {
         public static let NetworkNotFound = -1
-        public static let OK = 200
+        public static let Success = 200
         public static let Created = 201
         public static let Accepted = 202
         public static let NotAuthoritative = 203
@@ -93,12 +93,11 @@ class HttpHelper {
                      encoding: ParameterEncoding = URLEncoding.default,
                      headers: HTTPHeaders? = nil,
                      completionHandler: @escaping (AFDataResponse<Data?>) -> Void)
-    {
-        alomafireSession.request(urlConvertible,
-                                 method: method,
-                                 parameters: parameters,
-                                 encoding: encoding,
-                                 headers: headers).response(completionHandler: completionHandler)
+    { alomafireSession.request(urlConvertible,
+                               method: method,
+                               parameters: parameters,
+                               encoding: encoding,
+                               headers: headers).response(completionHandler: completionHandler)
     }
 
     func makeRequest(_ urlRequest: URLRequest, completionHandler: @escaping (AFDataResponse<Data?>) -> Void) {
