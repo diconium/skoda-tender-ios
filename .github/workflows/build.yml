@@ -24,5 +24,5 @@ jobs:
           xcodebuild clean -project skoda-tender-ios.xcodeproj -scheme skoda-tender-ios | xcpretty
       - name: Build Test
         run: |
-          xcodebuild test -project skoda-tender-ios.xcodeproj -scheme skoda-tender-ios -destination 'platform=iOS   Simulator,name=iPhone 14,OS=16.2' | xcpretty -s
+          xcodebuild test -project skoda-tender-ios.xcodeproj -scheme skoda-tender-ios -destination 'platform=iOS   Simulator,name=iPhone 16 Pro Max,OS=18.0' | xcpretty -s
 
