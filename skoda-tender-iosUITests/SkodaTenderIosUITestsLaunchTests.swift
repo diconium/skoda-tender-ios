@@ -1,13 +1,6 @@
-//
-//  skoda_tender_iosUITestsLaunchTests.swift
-//  skoda-tender-iosUITests
-//
-//  Created by Sergio Cagica on 22/10/2024.
-//
-
 import XCTest
 
-final class skoda_tender_iosUITestsLaunchTests: XCTestCase {
+class SkodaTenderIosUITestsLaunchTests: XCTestCase {
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
     }

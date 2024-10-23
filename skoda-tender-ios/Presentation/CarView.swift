@@ -12,9 +12,11 @@ struct CarView: View {
         VStack {
             Spacer(minLength: 300)
             HStack {
-                Text("Payment Services").font(.custom("SKODANext-Bold", size: 22)).foregroundStyle(.white)
+                Text("Payment Services").font(.custom("SKODANext-Bold", size: 22)
+                ).foregroundStyle(.white)
                 Spacer()
-                Text("View All").font(.custom("SKODANext-Regular", size: 14)).foregroundStyle(.electric300)
+                Text("View All").font(.custom("SKODANext-Regular", size: 14)
+                ).foregroundStyle(.electric300)
             }
             ScrollView(.horizontal) {
                 LazyHStack {

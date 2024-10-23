@@ -1,13 +1,6 @@
-//
-//  skoda_tender_iosUITests.swift
-//  skoda-tender-iosUITests
-//
-//  Created by Sergio Cagica on 22/10/2024.
-//
-
 import XCTest
 
-final class skoda_tender_iosUITests: XCTestCase {
+final class SkodaTenderIosUITests: XCTestCase {
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
 

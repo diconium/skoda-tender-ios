@@ -23,10 +23,10 @@ struct ContentView: View {
                     Divider()
                     Spacer()
                 }
-                    .background(Color.neutral900)
-                    .tabItem {
+                .background(Color.neutral900)
+                .tabItem {
                     Label(item.text,
-                        systemImage: item.icon)
+                          systemImage: item.icon)
                 }
             }
         }

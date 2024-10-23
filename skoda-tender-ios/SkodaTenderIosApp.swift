@@ -1,5 +1,5 @@
 //
-//  skoda_tender_iosApp.swift
+//  SkodaTenderIosApp.swift
 //  skoda-tender-ios
 //
 //  Created by Sergio Cagica on 22/10/2024.
@@ -9,7 +9,7 @@ import SwiftData
 import SwiftUI
 
 @main
-struct skoda_tender_iosApp: App {
+struct SkodaTenderIosApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
