@@ -14,7 +14,7 @@ struct ContentView: View {
 
     var body: some View {
         TabView {
-            firetrapTestingStuff()
+//            apiCallTest()
             ForEach(items, id: \.self) { item in
 
                 VStack {
@@ -32,17 +32,12 @@ struct ContentView: View {
         }
     }
 
-    private func firetrapTestingStuff() -> some View {
+    private func apiCallTest() -> some View {
         HttpHelper.shared.makeRequest("https://dummyjson.com/c/2d21-37ec-4fb6-852e") { data in
 
-            let datsasd = data.response.result
+            let datsasd = data.response
         }
 
-        HttpHelper.shared.makeRequest("https://dummyjson.com/c/2d21-37ec-4fb6-852e") { <#AFDataResponse<Data?>#> in
-            <#code#>
-        }
-
-        
         return Text("Tab2")
     }
 }
