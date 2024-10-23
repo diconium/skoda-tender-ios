@@ -7,6 +7,7 @@
 
 import Foundation
 
-protocol CarRepository {
-    func getCarInfo() -> [Car]
+protocol CarStatusRepository {
+
+    func getCarStatus(completionHandler: @escaping NetworkDataResponseHandler) -> Void
 }

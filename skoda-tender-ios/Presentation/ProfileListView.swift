@@ -12,7 +12,7 @@ struct ProfileListView: View {
             }
         }
         .task {
-            viewModel.getCarInfo()
+            await viewModel.getCarInfo()
         }
     }
 }
@@ -37,19 +37,19 @@ struct ProfileListView: View {
 
 class ProfileListViewModel: ObservableObject {
     // 2
-    var getCarInfoUseCase = GetCarInfoUseCase(repository: CarRepositoryImpl(dataSource: CarDataSourceImpl()))
+    var getCarInfoUseCase = GetCarInfoUseCase(repository: CarStatusRepositoryImpl(dataSource: StatusDataSourceImpl()))
 
     // 3
-    @Published var cars: [Car] = []
+    @Published var cars: [CarModel] = []
 
     // 4
     func getCarInfo() {
-        let result = getCarInfoUseCase.execute()
-        switch result {
-        case let .success(cars):
-            self.cars = cars
-        case let .failure(error):
-            print(error)
-        }
+//        let result = await getCarInfoUseCase.execute()
+//        switch result {
+//        case let .success(cars):
+//            self.cars = [cars] //fixme: @sergio
+//        case let .failure(error):
+//            print(error)
+//        }
     }
 }

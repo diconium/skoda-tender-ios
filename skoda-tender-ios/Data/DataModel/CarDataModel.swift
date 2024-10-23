@@ -8,6 +8,6 @@
 // MARK: - CarTest
 
 struct CarDataModel: Codable, Sendable {
-    let vin, brand, model: String?
-    let year: Int?
+    let vin, brand, model: String
+    let year: Int
 }

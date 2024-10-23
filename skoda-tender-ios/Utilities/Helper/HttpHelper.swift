@@ -10,6 +10,7 @@ import Foundation
 import SystemConfiguration
 
 class HttpHelper {
+    
     public enum HTTPCode {
         public static let NetworkNotFound = -1
         public static let OK = 200

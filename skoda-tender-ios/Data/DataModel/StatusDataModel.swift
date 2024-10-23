@@ -6,9 +6,11 @@
 //
 
 // MARK: - Status
+import Alamofire
 
 struct StatusDataModel: Codable, Sendable {
-    let user: UserDataModel?
-    let car: CarDataModel?
-    let subscriptions: [SubscriptionDataModel]?
+
+    let user: UserDataModel
+    let car: CarDataModel
+    let subscriptions: [SubscriptionDataModel]
 }

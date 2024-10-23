@@ -14,7 +14,7 @@ struct ContentView: View {
 
     var body: some View {
         TabView {
-//            apiCallTest()
+            apiCallTest()
             ForEach(items, id: \.self) { item in
 
                 VStack {
@@ -23,19 +23,32 @@ struct ContentView: View {
                     Divider()
                     Spacer()
                 }
-                .background(Color.neutral900)
-                .tabItem {
+                    .background(Color.neutral900)
+                    .tabItem {
                     Label(item.text,
-                          systemImage: item.icon)
+                        systemImage: item.icon)
                 }
             }
         }
     }
 
     private func apiCallTest() -> some View {
-        HttpHelper.shared.makeRequest("https://dummyjson.com/c/2d21-37ec-4fb6-852e") { data in
+        let statusDataSourceImpl = StatusDataSourceImpl()
+        let carStatusRepositoryImpl = CarStatusRepositoryImpl(dataSource: statusDataSourceImpl)
+        let useCase = GetCarInfoUseCase(repository: carStatusRepositoryImpl)
 
-            let datsasd = data.response
+        useCase.execute { useCaseResult in
+
+            switch useCaseResult {
+
+            case .success(let useCaseData):
+                var asd = useCaseData
+                let asdew = "asdsad"
+
+
+            case .failure(let useCaseError):
+                let asdsad = "asdsad"
+            }
         }
 
         return Text("Tab2")

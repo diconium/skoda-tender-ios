@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-final class Car {
+final class CarModel {
     var id: Int
     var vin: String
     var text: String
@@ -18,5 +18,11 @@ final class Car {
         self.id = id
         self.vin = vin
         self.text = text
+    }
+
+    init(carDataModel: CarDataModel) {
+        self.id = UUID().hashValue //@cagica needs 2refactor
+        self.vin = carDataModel.vin
+        self.text = "\(carDataModel.brand), \(carDataModel.model)"
     }
 }
