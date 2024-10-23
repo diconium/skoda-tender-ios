@@ -11,6 +11,10 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+      - name: SwiftLint
+        uses: sinoru/actions-swiftlint@v6
+        with:
+          swiftlint-args: lint --strict
       - name: SwiftFormat
         run: swiftformat . --lint
       - name: Build and Test
@@ -21,5 +25,3 @@ jobs:
            -sdk iphonesimulator \
            -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.2' \
             test || exit 1
-      - name: SwiftLint
-        run: swiftlint lint --strict
