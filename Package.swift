@@ -12,6 +12,9 @@ let package = Package(
             targets: ["skoda-tender-ios"]
         ),
     ],
+    dependencies: [
+        .package(url: "https://github.com/SimplyDanny/SwiftLintPlugins", from: "0.57.0"),
+    ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
@@ -21,8 +24,5 @@ let package = Package(
             name: "skoda-tender-iosTests",
             dependencies: ["skoda-tender-ios"]
         ),
-    ],
-    dependencies: [
-        .package(url: "https://github.com/SimplyDanny/SwiftLintPlugins", from: "0.57.0"),
     ]
 )

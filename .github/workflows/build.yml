@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+      - name: Install packages
+        run: swift package install
       - name: SwiftFormat
         run: swiftformat . --lint
       - name: SwiftLint
