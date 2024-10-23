@@ -7,29 +7,29 @@
 
 import Foundation
 
-// MARK: Error use cases
-enum UseCaseError: Error {
-    case networkError, decodingError, undefinedError
-}
-
-// MARK: Protocol response
-protocol GetCarInfoProtocol {
+// MARK: Protocol GetCarInfoProtocol
+fileprivate protocol GetCarInfoProtocol {
     func execute(useCaseResult: @escaping (Result<CarModel, UseCaseError>) -> Void)
 }
 
 // MARK: GetCarInfoUseCase
 struct GetCarInfoUseCase: GetCarInfoProtocol {
-    var repository: CarStatusRepository
+    let repository: StatusRepository
 
     func execute(useCaseResult: @escaping (Result<CarModel, UseCaseError>) -> Void) {
 
-        repository.getCarStatus { networkDataResponseHandler in
+        repository.getStatus { networkDataResponseHandler in
 
             let networkDatResult = networkDataResponseHandler.result
             switch networkDatResult {
 
             case .success(let data):
-                let carModel = CarModel(carDataModel: data.car)
+                guard let car = data.car else {
+
+                    useCaseResult(.failure(UseCaseError.networkError))
+                    return
+                }
+                let carModel = CarModel(carDataModel: car)
                 useCaseResult(.success(carModel))
 
             case .failure(_):

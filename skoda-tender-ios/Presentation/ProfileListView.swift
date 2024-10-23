@@ -20,7 +20,7 @@ struct ProfileListView: View {
 class ProfileListViewModel: ObservableObject {
     let getCarInfoUseCase: GetCarInfoUseCase = {
         let statusDataSourceImpl = StatusDataSourceImpl()
-        let carStatusRepositoryImpl = CarStatusRepositoryImpl(dataSource: statusDataSourceImpl)
+        let carStatusRepositoryImpl = StatusRepositoryImpl(dataSource: statusDataSourceImpl)
 
         return GetCarInfoUseCase(repository: carStatusRepositoryImpl)
     }()

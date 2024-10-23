@@ -10,7 +10,7 @@ import Alamofire
 
 struct StatusDataSourceImpl: StatusDataSource {
 
-    func getCarStatus(completionHandler: @escaping NetworkDataResponseHandler) {
+    func getStatus(completionHandler: @escaping NetworkDataResponseHandler) {
         AF.request(Constants.API.baseURL, method: .get)
             .cacheResponse(using: .cache)
             .redirect(using: .follow)

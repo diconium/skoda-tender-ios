@@ -1,5 +1,5 @@
 //
-//  Car.swift
+//  CarModel.swift
 //  skoda-tender-ios
 //
 //  Created by Sergio Cagica on 22/10/2024.
@@ -10,19 +10,29 @@ import SwiftData
 
 @Model
 final class CarModel {
+
     var id: Int
     var vin: String
+    var brand: String
+    var model: String
+    var year: Int
     var text: String
 
-    init(id: Int, vin: String, text: String) {
+    init(id: Int, vin: String, brand: String, model: String, year: Int, text: String) {
         self.id = id
         self.vin = vin
+        self.brand = brand
+        self.model = model
+        self.year = year
         self.text = text
     }
 
-    init(carDataModel: CarDataModel) {
-        self.id = UUID().hashValue //@cagica needs 2refactor
-        self.vin = carDataModel.vin
-        self.text = "\(carDataModel.brand), \(carDataModel.model)"
+    convenience init(carDataModel: CarDataModel) {
+        self.init(id: UUID().hashValue,
+            vin: carDataModel.vin,
+            brand: carDataModel.brand,
+            model: carDataModel.model,
+            year: carDataModel.year,
+            text: "\(carDataModel.brand) \(carDataModel.model) \(carDataModel.year)")
     }
 }

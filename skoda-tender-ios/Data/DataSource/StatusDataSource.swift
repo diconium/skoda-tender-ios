@@ -1,5 +1,5 @@
 //
-//  CarDataSource.swift
+//  StatusDataSource.swift
 //  skoda-tender-ios
 //
 //  Created by Sergio Cagica on 22/10/2024.
@@ -10,5 +10,5 @@ import Alamofire
 
 protocol StatusDataSource {
     
-    func getCarStatus(completionHandler: @escaping (DataResponse<StatusDataModel, AFError>) -> Void) -> Void
+    func getStatus(completionHandler: @escaping (DataResponse<StatusDataModel, AFError>) -> Void) -> Void
 }
