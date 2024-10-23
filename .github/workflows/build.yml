@@ -29,8 +29,8 @@ jobs:
         id: pre-warm
         uses: futureware-tech/simulator-action@v3
         with:
-            model: 'iPhone 16 Pro Max'
-            os_version: '18.0'
+            model: 'iPhone 15 Pro Max'
+            os_version: '18.1'
             os: 'iOS'
     outputs:
         id: ${{ steps.pre-warm.outputs.udid }}
