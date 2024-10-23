@@ -1,7 +1,7 @@
 disabled_rules:
 - trailing_whitespace
 - trailing_comma
-- opening_braces
+- opening_brace
 opt_in_rules:
 - empty_count
 - empty_string
