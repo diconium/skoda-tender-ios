@@ -2,7 +2,7 @@ import Foundation
 import SwiftData
 
 @Model
-final class MenuItem {
+final class MenuItemModel {
     var text: String
     var icon: String
 
