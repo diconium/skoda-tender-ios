@@ -27,13 +27,14 @@ struct CarView: View {
             ServicesHeaderView().padding(17)
             ScrollView(.horizontal) {
                 HStack {
-                    CardView().padding(.leading, 17)
-                    CardView().padding(.leading, 5)
-                    CardView().padding(.horizontal, 5)
+                    CardView(title: "Ambient Lighting", state: "EXPIRED", expirationDate: "on 22 Aug 2024").padding(.leading, 17)
+                    CardView(title: "Ambient Lighting", state: "EXPIRED", expirationDate: "on 22 Aug 2024").padding(.leading, 5)
+                    CardView(title: "Ambient Lighting", state: "EXPIRED", expirationDate: "on 22 Aug 2024").padding(.horizontal, 5)
                 }
             }
-        }.padding(0)
-            .padding(.bottom, 10)
+        }
+        .padding(0)
+        .padding(.bottom, 10)
     }
 }
 
