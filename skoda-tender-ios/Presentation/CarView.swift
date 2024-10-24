@@ -2,17 +2,13 @@ import SwiftData
 import SwiftUI
 
 struct CarView: View {
-    private let items: [String] = [
-        "test",
-        "test",
-        "test",
-    ]
+    @StateObject var viewModel = CarViewModel()
 
     var body: some View {
         VStack {
             ZStack(alignment: .top) {
                 VStack {
-                    HeaderView()
+                    HeaderView(title: viewModel.carModelList?.model ?? "")
                     ConnectionView()
                 }.padding(.horizontal, 20)
                 Image(.car)
@@ -27,21 +23,77 @@ struct CarView: View {
             ServicesHeaderView().padding(17)
             ScrollView(.horizontal) {
                 HStack {
-                    CardView(title: "Ambient Lighting", state: "EXPIRED", expirationDate: "on 22 Aug 2024").padding(.leading, 17)
-                    CardView(title: "Ambient Lighting", state: "EXPIRED", expirationDate: "on 22 Aug 2024").padding(.leading, 5)
-                    CardView(title: "Ambient Lighting", state: "EXPIRED", expirationDate: "on 22 Aug 2024").padding(.horizontal, 5)
+                    ForEach(viewModel.subscriptionList, id: \.self) { subscription in
+                        CardView(title: subscription?.name ?? "",
+                                 state: subscription?.status ?? "",
+                                 expirationDate: subscription?.endDate ?? "")
+                    }.padding(17)
                 }
             }
+        }
+        .task {
+            viewModel.getCarInfo()
+            // viewModel.getSubscriptionsInfo()
         }
         .padding(0)
         .padding(.bottom, 10)
     }
 }
 
+class CarViewModel: ObservableObject {
+    let getCarInfoUseCase: GetCarInfoUseCase = {
+        let statusDataSourceImpl = StatusDataSourceImpl()
+        let carStatusRepositoryImpl = StatusRepositoryImpl(dataSource: statusDataSourceImpl)
+
+        return GetCarInfoUseCase(repository: carStatusRepositoryImpl)
+    }()
+
+    let getSubscriptionsInfoUseCase: GetSubscriptionsInfoUseCase = {
+        let statusDataSourceImpl = StatusDataSourceImpl()
+        let carStatusRepositoryImpl = StatusRepositoryImpl(dataSource: statusDataSourceImpl)
+
+        return GetSubscriptionsInfoUseCase(repository: carStatusRepositoryImpl)
+    }()
+
+    @Published var carModelList: CarModel?
+    @Published var subscriptionList: [SubscriptionModel?] = []
+    @Published var isError: Bool = false
+
+    var currentPage: Int = 0
+
+    func getCarInfo() {
+        getCarInfoUseCase.execute { useCaseResult in
+
+            switch useCaseResult {
+            case let .success(useCaseData):
+                self.carModelList = useCaseData
+
+            case .failure:
+                self.isError = true
+            }
+        }
+    }
+
+    func getSubscriptionsInfo() {
+        getSubscriptionsInfoUseCase.execute { useCaseResult in
+
+            switch useCaseResult {
+            case let .success(useCaseData):
+                self.subscriptionList = useCaseData
+
+            case .failure:
+                self.isError = true
+            }
+        }
+    }
+}
+
 struct HeaderView: View {
+    var title: String
+
     var body: some View {
         HStack {
-            Text("Enyaq Coupè")
+            Text(title)
                 .font(.custom("SKODANext-Bold", size: 27))
                 .foregroundStyle(.white)
             Spacer()

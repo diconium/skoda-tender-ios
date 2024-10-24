@@ -8,7 +8,8 @@ struct ProfileView: View {
     let sheetcornerRadius: CGFloat = 20
     var viewState: ViewState = .active
 
-    @State var isPresented = true
+    @State private var showSheet = true
+    @State private var sheetHeight: CGFloat = .zero
     @StateObject var viewModel = ProfileListViewModel()
 
     var body: some View {
@@ -31,54 +32,73 @@ struct ProfileView: View {
                             .onTapGesture(perform: { self.viewModel.currentPage = index })
                     }
                 }.padding(20)
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("Ambient Lighting - additional functions")
-                        .font(.custom("SKODANext-Bold", size: 24))
-                        .foregroundColor(SwiftUI.Color.white)
-                    TimeleftHeaderView()
-                    ScrollView(.vertical) {
-                        AutoRenewView()
-                        if viewState == ViewState.active {
-                            Text("Included Services")
-                                .font(.custom("SKODANext-Bold", size: 16))
-                                .foregroundColor(SwiftUI.Color.white)
-                                .padding(.bottom, 10)
-                            AccordionView()
-                            AccordionView()
-                            AccordionView()
-                        }
-                    }
-                    Spacer()
-                    HStack(alignment: .center) {
-                        Spacer()
-                        Button(action: {
-                            if let yourURL = URL(string: "https://shop.skoda-connect.com") {
-                                UIApplication.shared.open(yourURL, options: [:], completionHandler: nil)
-                            }
-
-                        }, label: {
-                            Text("Purchase")
-                                .font(.custom("SKODANext-Regular", size: 16))
-                                .foregroundStyle(.black)
-                                .padding(.vertical, 10)
-                                .frame(width: 300, height: 52)
-                        })
-                        .tint(.accent)
-                        .controlSize(.small)
-                        .buttonStyle(.borderedProminent)
-                        Spacer()
-                    }
-                }
-                .padding(17)
-                .padding(.top, 17)
-                .background(.neutral800)
-                .addBorder(.neutral800, width: 1, cornerRadius: sheetcornerRadius)
                 Spacer()
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(.top, 10)
         }
+        .sheet(isPresented: $showSheet) {
+            VStack(alignment: .leading, spacing: 10) {
+                Text("Ambient Lighting - additional functions")
+                    .font(.custom("SKODANext-Bold", size: 24))
+                    .foregroundColor(SwiftUI.Color.white)
+                    .padding(.top, 20)
+                TimeleftHeaderView()
+                AutoRenewView()
+                if viewState == ViewState.active {
+                    Text("Included Services")
+                        .font(.custom("SKODANext-Bold", size: 16))
+                        .foregroundColor(SwiftUI.Color.white)
+                        .padding(.bottom, 10)
+                    AccordionView()
+                    AccordionView()
+                    AccordionView()
+                }
+                Spacer()
+                HStack(alignment: .center) {
+                    Spacer()
+                    Button(action: {
+                        if let yourURL = URL(string: "https://shop.skoda-connect.com") {
+                            UIApplication.shared.open(yourURL, options: [:], completionHandler: nil)
+                        }
+
+                    }, label: {
+                        Text("Purchase")
+                            .font(.custom("SKODANext-Regular", size: 16))
+                            .foregroundStyle(.black)
+                            .padding(.vertical, 10)
+                            .frame(width: 300, height: 52)
+                    })
+                    .tint(.accent)
+                    .controlSize(.small)
+                    .buttonStyle(.borderedProminent)
+                    Spacer()
+                }
+            }
+            .padding(17)
+            .padding(.top, 17)
+            .background(.neutral800)
+            .presentationDetents([.medium])
+            .presentationCornerRadius(20)
+        }
         .background(.neutral900)
+    }
+
+    enum SheetPosition: CGFloat, CaseIterable {
+        case peek = 0.1
+        case detailed = 0.5
+
+        var detent: PresentationDetent {
+            .fraction(rawValue)
+        }
+
+        static let detents = Set(SheetPosition.allCases.map { $0.detent })
+    }
+}
+
+struct InnerHeightPreferenceKey: PreferenceKey {
+    static let defaultValue: CGFloat = .zero
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = nextValue()
     }
 }
 
