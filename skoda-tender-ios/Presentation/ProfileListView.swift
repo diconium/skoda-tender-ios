@@ -11,7 +11,7 @@ struct ProfileListView: View {
                 Text(car.text)
             }
         }
-            .task {
+        .task {
             viewModel.getCarInfo()
         }
     }
@@ -27,15 +27,16 @@ class ProfileListViewModel: ObservableObject {
 
     @Published var carModelList: [CarModel] = []
 
+    var currentPage: Int = 0
+
     func getCarInfo() {
         getCarInfoUseCase.execute { useCaseResult in
 
             switch useCaseResult {
-
-            case .success(let useCaseData):
+            case let .success(useCaseData):
                 break // TODO(Sergio): Handle the data on UI
 
-            case .failure(let useCaseError):
+            case let .failure(useCaseError):
                 break // TODO(Sergio): Handle the error on UI
             }
         }
