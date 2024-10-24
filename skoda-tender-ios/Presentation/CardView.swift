@@ -2,31 +2,48 @@ import SDWebImageSwiftUI
 import SwiftUI
 
 struct CardView: View {
-    let cardAndImageWidth: CGFloat = 335
-    let cardHeight: CGFloat = 177
+    let cardWidth: CGFloat = 300
+    let cardHeight: CGFloat = 100
     let imageHeight: CGFloat = 196
-    let cornerRadius: CGFloat = 20
+    let cornerRadius: CGFloat = 5
 
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: cornerRadius)
-                .strokeBorder(SwiftUI.Color.gray, lineWidth: 1)
-                .frame(width: cardAndImageWidth, height: cardHeight)
-                .background(.electric600)
-            VStack(alignment: .leading, spacing: 10) {
-                LazyVStack(alignment: .leading, spacing: 2) {
-                    Text("Ambient Light")
-                        .font(.custom("SKODANext-Bold", size: 14))
-                    Text("Expired")
-                        .font(.custom("SKODANext-Regular", size: 12))
-                        .foregroundColor(SwiftUI.Color.red)
-                }
-                .padding(.horizontal, 12)
-                .padding(.bottom, 11)
+        VStack(alignment: .leading, spacing: 10) {
+            HStack {
+                TimeleftHeaderBreakLineView()
+                Spacer()
+                Image(.dotsVertical)
             }
+            Spacer()
+            Text("Ambient Lighting")
+                .font(.custom("SKODANext-Bold", size: 20))
+                .foregroundColor(SwiftUI.Color.white)
         }
-        .frame(width: cardAndImageWidth, height: cardHeight)
-        .cornerRadius(cornerRadius)
+        .frame(width: cardWidth, height: cardHeight)
+        .padding(.horizontal, 25)
+        .padding(.top, 10)
+        .padding(.bottom, 25)
+        .background(.neutral800)
+        .addBorder(.electric300, width: 2, cornerRadius: cornerRadius)
+    }
+}
+
+struct TimeleftHeaderBreakLineView: View {
+    var body: some View {
+        VStack(alignment: .leading) {
+            HStack {
+                Image(.ellipseRed)
+                    .foregroundColor(.neutral200)
+                Text("EXPIRED")
+                    .font(.custom("SKODANext-Regular", size: 10))
+                    .foregroundStyle(.white)
+                Spacer()
+            }
+            Spacer()
+            Text("on 22 Aug 2024")
+                .font(.custom("SKODANext-Light", size: 12))
+                .foregroundStyle(.neutral200)
+        }
     }
 }
 

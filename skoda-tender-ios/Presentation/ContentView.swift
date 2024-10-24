@@ -15,17 +15,21 @@ struct ContentView: View {
     var body: some View {
         TabView {
             ForEach(items, id: \.self) { item in
-
                 VStack {
                     Spacer()
-                    CarView()
+                    if item.icon == "car" {
+                        CarView()
+                    }
+                    if item.icon == "person" {
+                        ProfileView()
+                    }
                     Divider()
                     Spacer()
                 }
-                    .background(Color.neutral900)
-                    .tabItem {
+                .background(Color.neutral900)
+                .tabItem {
                     Label(item.text,
-                        systemImage: item.icon)
+                          systemImage: item.icon)
                 }
             }
         }
