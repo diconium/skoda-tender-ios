@@ -10,10 +10,13 @@ import SwiftUI
 
 @main
 struct SkodaTenderIosApp: App {
+
+    @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
+
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             ItemModel.self,
-        ])
+            ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
         do {
@@ -26,7 +29,8 @@ struct SkodaTenderIosApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .onAppear(perform: { appDelegate.app = self })
         }
-        .modelContainer(sharedModelContainer)
+            .modelContainer(sharedModelContainer)
     }
 }
