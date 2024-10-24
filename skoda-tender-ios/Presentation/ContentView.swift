@@ -4,12 +4,12 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
 
-    private let items: [MenuItem] = [
-        MenuItem(text: "Car", icon: "car"),
-        MenuItem(text: "Maps", icon: "map"),
-        MenuItem(text: "Inspect", icon: "camera"),
-        MenuItem(text: "Discover", icon: "doc"),
-        MenuItem(text: "Profile", icon: "person"),
+    private let items: [MenuItemModel] = [
+        MenuItemModel(text: "Car", icon: "car"),
+        MenuItemModel(text: "Maps", icon: "map"),
+        MenuItemModel(text: "Inspect", icon: "camera"),
+        MenuItemModel(text: "Discover", icon: "doc"),
+        MenuItemModel(text: "Profile", icon: "person"),
     ]
 
     var body: some View {
@@ -38,5 +38,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .modelContainer(for: MenuItem.self, inMemory: true)
+        .modelContainer(for: MenuItemModel.self, inMemory: true)
 }
