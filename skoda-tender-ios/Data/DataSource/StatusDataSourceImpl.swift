@@ -5,11 +5,10 @@
 //  Created by Fábio Barreiros on 23/10/2024.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 
 struct StatusDataSourceImpl: StatusDataSource {
-
     func getStatus(completionHandler: @escaping NetworkDataResponseHandler) {
         AF.request(Constants.API.baseURL, method: .get)
             .cacheResponse(using: .cache)
@@ -17,4 +16,3 @@ struct StatusDataSourceImpl: StatusDataSource {
             .responseDecodable(of: StatusDataModel.self, completionHandler: completionHandler)
     }
 }
-

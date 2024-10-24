@@ -10,8 +10,7 @@ import Foundation
 struct StatusRepositoryImpl: StatusRepository {
     var dataSource: StatusDataSource
 
-    func getStatus(completionHandler: @escaping NetworkDataResponseHandler) -> Void {
-
+    func getStatus(completionHandler: @escaping NetworkDataResponseHandler) {
         dataSource.getStatus(completionHandler: completionHandler)
     }
 }

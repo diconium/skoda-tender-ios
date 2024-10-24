@@ -8,7 +8,6 @@
 // MARK: - CarDataModel
 
 struct CarDataModel: Codable, Sendable {
-  
     let vin: String
     let brand: String
     let model: String

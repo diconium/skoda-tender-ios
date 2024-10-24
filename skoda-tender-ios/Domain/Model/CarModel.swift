@@ -10,7 +10,6 @@ import SwiftData
 
 @Model
 final class CarModel {
-
     var id: Int
     var vin: String
     var brand: String
@@ -29,10 +28,10 @@ final class CarModel {
 
     convenience init(carDataModel: CarDataModel) {
         self.init(id: UUID().hashValue,
-            vin: carDataModel.vin,
-            brand: carDataModel.brand,
-            model: carDataModel.model,
-            year: carDataModel.year,
-            text: "\(carDataModel.brand) \(carDataModel.model) \(carDataModel.year)")
+                  vin: carDataModel.vin,
+                  brand: carDataModel.brand,
+                  model: carDataModel.model,
+                  year: carDataModel.year,
+                  text: "\(carDataModel.brand) \(carDataModel.model) \(carDataModel.year)")
     }
 }

@@ -10,7 +10,6 @@ import SwiftData
 
 @Model
 final class UserModel {
-
     var id: Int
     var email: String
     var name: String
@@ -23,7 +22,7 @@ final class UserModel {
 
     convenience init(userDataModel: UserDataModel) {
         self.init(id: UUID().hashValue,
-            email: userDataModel.email,
-            name: userDataModel.name)
+                  email: userDataModel.email,
+                  name: userDataModel.name)
     }
 }

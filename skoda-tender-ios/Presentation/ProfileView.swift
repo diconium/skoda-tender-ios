@@ -1,14 +1,21 @@
 import SwiftUI
 
 struct ProfileView: View {
-    let cornerRadius: CGFloat = 20
+    enum ViewState {
+        case expired, active, new
+    }
 
+    let sheetcornerRadius: CGFloat = 20
+    var viewState: ViewState = .active
+
+    @State var isPresented = true
     @StateObject var viewModel = ProfileListViewModel()
 
     var body: some View {
         HStack(alignment: .top) {
             VStack {
                 ServicesHeaderView().padding(17)
+                PillsView().padding(17)
                 ScrollView(.horizontal) {
                     HStack {
                         CardView(title: "Ambient Lighting", state: "EXPIRED", expirationDate: "on 22 Aug 2024").padding(.leading, 17)
@@ -24,13 +31,23 @@ struct ProfileView: View {
                             .onTapGesture(perform: { self.viewModel.currentPage = index })
                     }
                 }.padding(20)
-
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Ambient Lighting - additional functions")
                         .font(.custom("SKODANext-Bold", size: 24))
                         .foregroundColor(SwiftUI.Color.white)
                     TimeleftHeaderView()
-                    AutoRenewView()
+                    ScrollView(.vertical) {
+                        AutoRenewView()
+                        if viewState == ViewState.active {
+                            Text("Included Services")
+                                .font(.custom("SKODANext-Bold", size: 16))
+                                .foregroundColor(SwiftUI.Color.white)
+                                .padding(.bottom, 10)
+                            AccordionView()
+                            AccordionView()
+                            AccordionView()
+                        }
+                    }
                     Spacer()
                     HStack(alignment: .center) {
                         Spacer()
@@ -39,13 +56,13 @@ struct ProfileView: View {
                                 UIApplication.shared.open(yourURL, options: [:], completionHandler: nil)
                             }
 
-                        }) {
+                        }, label: {
                             Text("Purchase")
-                                .font(.custom("SKODANext-Light", size: 16))
+                                .font(.custom("SKODANext-Regular", size: 16))
                                 .foregroundStyle(.black)
                                 .padding(.vertical, 10)
                                 .frame(width: 300, height: 52)
-                        }
+                        })
                         .tint(.accent)
                         .controlSize(.small)
                         .buttonStyle(.borderedProminent)
@@ -55,12 +72,13 @@ struct ProfileView: View {
                 .padding(17)
                 .padding(.top, 17)
                 .background(.neutral800)
-                .addBorder(.neutral800, width: 1, cornerRadius: cornerRadius)
+                .addBorder(.neutral800, width: 1, cornerRadius: sheetcornerRadius)
                 Spacer()
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(.top, 10)
-        }.background(.neutral900)
+        }
+        .background(.neutral900)
     }
 }
 
@@ -88,25 +106,42 @@ struct PillsView: View {
                 Button("Ambient Lighting") {
                     print("Button pressed!")
                 }
-                .padding(10)
-                .foregroundColor(.white)
-                .background(.neutral800)
-                .clipShape(Capsule())
+                .tint(.neutral800)
+                .controlSize(.small)
+                .buttonStyle(.borderedProminent)
                 Button("Ambient Lighting") {
                     print("Button pressed!")
                 }
-                padding(10)
-                    .foregroundStyle(.white)
-                    .background(.neutral800)
-                    .clipShape(Capsule())
+                .tint(.neutral900)
+                .controlSize(.small)
+                .buttonStyle(.borderedProminent)
                 Button("Ambient Lighting") {
                     print("Button pressed!")
                 }
-                padding(10)
-                    .background(.neutral800)
-                    .clipShape(Capsule())
+                .tint(.neutral900)
+                .controlSize(.small)
+                .buttonStyle(.borderedProminent)
             }
         }
+    }
+}
+
+struct AccordionView: View {
+    let text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        + "Aliquam sed mauris sit amet ex finibus suscipit."
+        + "Nullam dapibus pulvinar eros, eget fringilla enim finibus ac. "
+        + "Nunc tempor sem in vehicula placerat. Nam vitae fermentum nisl." +
+        "Proin dictum ligula vel interdum hendrerit."
+    var body: some View {
+        VStack {
+            DisclosureGroup("Pay to Fuel") {
+                VStack {
+                    Text(text)
+                }
+            }.padding()
+        }
+        .background(.neutral900)
+        .addBorder(.neutral900, width: 1, cornerRadius: 5)
     }
 }
 
@@ -117,16 +152,15 @@ struct AutoRenewView: View {
         HStack {
             Text("Auto-Renew")
                 .font(.custom("SKODANext-Light", size: 14))
-                .foregroundStyle(.white)
-                .padding(10)
+                .foregroundStyle(.neutral200)
             Spacer()
             Toggle("", isOn: $doesClose)
                 .toggleStyle(.switch)
                 .tint(.electric300)
                 .fixedSize()
                 .scaleEffect(0.8)
-                .offset(x: 5)
         }
+        .padding(10)
         .frame(height: 44)
         .background(.emerald800)
         Text("Experience perfect comfort with interior lighting. The ambient LED lighting includes footwell illumination and offers up to thirty attractive color options.")

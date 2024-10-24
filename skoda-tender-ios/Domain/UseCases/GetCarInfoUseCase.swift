@@ -8,31 +8,30 @@
 import Foundation
 
 // MARK: Protocol GetCarInfoProtocol
-fileprivate protocol GetCarInfoProtocol {
+
+private protocol GetCarInfoProtocol {
     func execute(useCaseResult: @escaping (Result<CarModel, UseCaseError>) -> Void)
 }
 
 // MARK: GetCarInfoUseCase
+
 struct GetCarInfoUseCase: GetCarInfoProtocol {
     let repository: StatusRepository
 
     func execute(useCaseResult: @escaping (Result<CarModel, UseCaseError>) -> Void) {
-
         repository.getStatus { networkDataResponseHandler in
 
             let networkDatResult = networkDataResponseHandler.result
             switch networkDatResult {
-
-            case .success(let data):
+            case let .success(data):
                 guard let car = data.car else {
-
                     useCaseResult(.failure(UseCaseError.networkError))
                     return
                 }
                 let carModel = CarModel(carDataModel: car)
                 useCaseResult(.success(carModel))
 
-            case .failure(_):
+            case .failure:
                 useCaseResult(.failure(UseCaseError.networkError))
             }
         }

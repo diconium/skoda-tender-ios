@@ -7,16 +7,16 @@
 
 import Foundation
 
-struct Constants {
-    struct API {
+enum Constants {
+    enum API {
         static let baseURL = "http://18.156.191.202:8080/subscriptions/TMBJR0NX4RY183174/status"
     }
 
-    struct Notifications {
+    enum Notifications {
         static let carDataUpdated = Notification.Name("carDataUpdated")
     }
 
-    struct UI {
+    enum UI {
         static let defaultCornerRadius: CGFloat = 8.0
     }
 }

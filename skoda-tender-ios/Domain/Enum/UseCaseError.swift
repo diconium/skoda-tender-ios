@@ -8,6 +8,5 @@
 // MARK: Error use cases
 
 enum UseCaseError: Error {
-    
     case networkError, decodingError, undefinedError
 }

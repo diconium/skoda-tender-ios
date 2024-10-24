@@ -8,31 +8,30 @@
 import Foundation
 
 // MARK: Protocol GetSubscriptionsInfoProtocol
-fileprivate protocol GetSubscriptionsInfoProtocol {
+
+private protocol GetSubscriptionsInfoProtocol {
     func execute(useCaseResult: @escaping (Result<[SubscriptionModel], UseCaseError>) -> Void)
 }
 
 // MARK: GetSubscriptionsInfoUseCase
+
 struct GetSubscriptionsInfoUseCase: GetSubscriptionsInfoProtocol {
     let repository: StatusRepository
 
     func execute(useCaseResult: @escaping (Result<[SubscriptionModel], UseCaseError>) -> Void) {
-
         repository.getStatus { networkDataResponseHandler in
 
             let networkDatResult = networkDataResponseHandler.result
             switch networkDatResult {
-
-            case .success(let data):
+            case let .success(data):
                 guard let subscriptions = data.subscriptions else {
-
                     useCaseResult(.failure(UseCaseError.networkError))
                     return
                 }
                 let subscriptionDataModelList = subscriptions.compactMap { SubscriptionModel(subscriptionDataModel: $0) }
                 useCaseResult(.success(subscriptionDataModelList))
 
-            case .failure(_):
+            case .failure:
                 useCaseResult(.failure(UseCaseError.networkError))
             }
         }

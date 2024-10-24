@@ -10,10 +10,9 @@ import SwiftData
 
 @Model
 final class SubscriptionModel {
-
     var id: Int
     var name: String
-    var sDescription: String? //A stored property cannot be named 'description', coreData reserved
+    var sDescription: String? // A stored property cannot be named 'description', coreData reserved
     var imageLink: String?
     var length: Int
     var price: Double
@@ -21,7 +20,6 @@ final class SubscriptionModel {
     var status: String
     var startDate: String
     var endDate: String?
-
 
     init(id: Int, name: String, sDescription: String? = nil, imageLink: String? = nil, length: Int, price: Double, includedServices: [IncludedServiceDataModel]? = nil, status: String, startDate: String, endDate: String? = nil) {
         self.id = id
@@ -38,14 +36,14 @@ final class SubscriptionModel {
 
     convenience init(subscriptionDataModel: SubscriptionDataModel) {
         self.init(id: UUID().hashValue,
-            name: subscriptionDataModel.name,
-            sDescription: subscriptionDataModel.description,
-            imageLink: subscriptionDataModel.imageLink,
-            length: subscriptionDataModel.length,
-            price: subscriptionDataModel.price,
-            includedServices: subscriptionDataModel.includedServices,
-            status: subscriptionDataModel.status,
-            startDate: subscriptionDataModel.startDate,
-            endDate: subscriptionDataModel.endDate)
+                  name: subscriptionDataModel.name,
+                  sDescription: subscriptionDataModel.description,
+                  imageLink: subscriptionDataModel.imageLink,
+                  length: subscriptionDataModel.length,
+                  price: subscriptionDataModel.price,
+                  includedServices: subscriptionDataModel.includedServices,
+                  status: subscriptionDataModel.status,
+                  startDate: subscriptionDataModel.startDate,
+                  endDate: subscriptionDataModel.endDate)
     }
 }

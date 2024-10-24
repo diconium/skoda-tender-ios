@@ -8,6 +8,5 @@
 import Foundation
 
 protocol StatusRepository {
-
-    func getStatus(completionHandler: @escaping NetworkDataResponseHandler) -> Void
+    func getStatus(completionHandler: @escaping NetworkDataResponseHandler)
 }
