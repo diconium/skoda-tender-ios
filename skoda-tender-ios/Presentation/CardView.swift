@@ -11,24 +11,29 @@ struct CardView: View {
     var state: String
     var expirationDate: String
 
+    @State var linkActive: Bool = true
+
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            HStack {
-                TimeleftHeaderBreakLineView(state: state, expirationDate: expirationDate)
+        NavigationLink(destination: ProfileView()) {
+            VStack(alignment: .leading, spacing: 10) {
+                HStack {
+                    TimeleftHeaderBreakLineView(state: state, expirationDate: expirationDate)
+                    Spacer()
+                    Image(.dotsVertical)
+                }
                 Spacer()
-                Image(.dotsVertical)
+                Text(title)
+                    .font(.custom("SKODANext-Bold", size: 20))
+                    .foregroundColor(SwiftUI.Color.white)
             }
-            Spacer()
-            Text(title)
-                .font(.custom("SKODANext-Bold", size: 20))
-                .foregroundColor(SwiftUI.Color.white)
+            .frame(width: cardWidth, height: cardHeight)
+            .padding(.horizontal, 15)
+            .padding(.top, 10)
+            .padding(.bottom, 25)
+            .background(.neutral800)
+            .addBorder(.neutral800, width: 1, cornerRadius: cornerRadius)
+            .background(.neutral800)
         }
-        .frame(width: cardWidth, height: cardHeight)
-        .padding(.horizontal, 15)
-        .padding(.top, 10)
-        .padding(.bottom, 25)
-        .background(.neutral800)
-        .addBorder(.neutral800, width: 1, cornerRadius: cornerRadius)
     }
 }
 

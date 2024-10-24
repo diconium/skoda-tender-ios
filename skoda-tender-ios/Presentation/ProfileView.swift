@@ -77,7 +77,7 @@ struct ProfileView: View {
             .padding(17)
             .padding(.top, 17)
             .background(.neutral800)
-            .presentationDetents([.medium])
+            .presentationDetents([.medium, .large])
             .presentationCornerRadius(20)
         }
         .background(.neutral900)

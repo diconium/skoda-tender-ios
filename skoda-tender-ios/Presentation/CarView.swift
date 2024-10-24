@@ -5,38 +5,44 @@ struct CarView: View {
     @StateObject var viewModel = CarViewModel()
 
     var body: some View {
-        VStack {
-            ZStack(alignment: .top) {
+        NavigationStack {
+            ScrollView(.vertical) {
                 VStack {
-                    HeaderView(title: viewModel.carModelList?.model ?? "")
-                    ConnectionView()
-                }.padding(.horizontal, 20)
-                Image(.car)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .clipShape(RoundedRectangle(cornerRadius: 25))
-                    .padding(0)
-            }
-            CarInfoView(type: CarInfoView.ViewType.vehicle).padding(.horizontal, 17)
-            CarInfoView(type: CarInfoView.ViewType.battery).padding(.horizontal, 17)
-            CarInfoView(type: CarInfoView.ViewType.temperature).padding(.horizontal, 17)
-            ServicesHeaderView().padding(17)
-            ScrollView(.horizontal) {
-                HStack {
-                    ForEach(viewModel.subscriptionList, id: \.self) { subscription in
-                        CardView(title: subscription?.name ?? "",
-                                 state: subscription?.status ?? "",
-                                 expirationDate: subscription?.endDate ?? "")
-                    }.padding(17)
+                    ZStack(alignment: .top) {
+                        VStack {
+                            HeaderView(title: viewModel.carModelList?.model ?? "")
+                            ConnectionView()
+                        }
+                        .padding(.horizontal, 20)
+                        .padding(.top, 20)
+                        Image(.car)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .clipShape(RoundedRectangle(cornerRadius: 25))
+                            .padding(0)
+                    }
+                    CarInfoView(type: CarInfoView.ViewType.vehicle).padding(.horizontal, 17)
+                    CarInfoView(type: CarInfoView.ViewType.battery).padding(.horizontal, 17)
+                    CarInfoView(type: CarInfoView.ViewType.temperature).padding(.horizontal, 17)
+                    ServicesHeaderView().padding(17)
+                    ScrollView(.horizontal) {
+                        HStack {
+                            ForEach(viewModel.subscriptionList, id: \.self) { subscription in
+                                CardView(title: subscription?.name ?? "",
+                                         state: subscription?.status ?? "",
+                                         expirationDate: subscription?.endDate ?? "")
+                            }.padding(17)
+                        }
+                    }
                 }
+                .task {
+                    viewModel.getCarInfo()
+                    viewModel.getSubscriptionsInfo()
+                }
+                .padding(0)
+                .padding(.bottom, 10)
             }
         }
-        .task {
-            viewModel.getCarInfo()
-            // viewModel.getSubscriptionsInfo()
-        }
-        .padding(0)
-        .padding(.bottom, 10)
     }
 }
 
