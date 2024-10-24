@@ -37,10 +37,10 @@ struct VehicleTypeView: View {
         HStack {
             Image(.notificationBell)
                 .foregroundColor(.neutral200)
+                .padding(.horizontal, 10)
             Text("Unlocked").font(.custom("SKODANext-Bold", size: 20))
                 .foregroundStyle(.white)
                 .cornerRadius(25)
-                .padding(.horizontal, 10)
             Spacer()
         }
         .padding(.horizontal, 20)
@@ -53,13 +53,13 @@ struct BatteryTypeView: View {
             .font(.custom("SKODANext-Light", size: 14))
             .foregroundStyle(.white)
             .padding(.horizontal, 20)
-        HStack {
+        HStack(spacing: 10) {
             Image(.batteryIcon)
                 .foregroundColor(.neutral200)
+                .padding(.horizontal, 10)
             Text("61%/276 km")
                 .font(.custom("SKODANext-Bold", size: 20))
                 .foregroundStyle(.white)
-                .padding(.horizontal, 10)
             Spacer()
             Image(.plugIcon)
                 .foregroundColor(.neutral200)
@@ -75,19 +75,21 @@ struct TemperatureTypeView: View {
 
     var body: some View {
         HStack {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 10) {
                 Text("Target Temperature")
                     .font(.custom("SKODANext-Light", size: 14))
                     .foregroundStyle(.white)
                 HStack {
-                    Image(.notificationBell)
-                        .foregroundColor(.neutral200)
+                    Image(systemName: "thermometer")
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 15)
                     Text("21ºC")
                         .font(.custom("SKODANext-Bold", size: 20))
                         .foregroundStyle(.white)
                     Spacer()
                 }
             }.padding(.horizontal, 20)
+            Spacer()
             VStack {
                 Toggle("", isOn: $doesClose)
                     .toggleStyle(.switch)
