@@ -5,7 +5,7 @@
 //  Created by Fábio Barreiros on 23/10/2024.
 //
 
-// MARK: - Status
+// MARK: - StatusDataModel
 import Alamofire
 
 struct StatusDataModel: Codable, Sendable {

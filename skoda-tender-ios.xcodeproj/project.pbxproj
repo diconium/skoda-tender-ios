@@ -10,9 +10,6 @@
 		0463F1842CC85ADA0013FA35 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 0463F1832CC85ADA0013FA35 /* .swiftlint.yml */; };
 		0463F1B22CC85D5D0013FA35 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0463F1B12CC85D5D0013FA35 /* Alamofire */; };
 		0463F1B52CC85D770013FA35 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 0463F1B42CC85D770013FA35 /* SDWebImageSwiftUI */; };
-		C64E3DAB2CC9141200364B63 /* cleanUp_pbxproj.sh in Resources */ = {isa = PBXBuildFile; fileRef = C64E3DA52CC9141200364B63 /* cleanUp_pbxproj.sh */; };
-		C64E3DAC2CC9141200364B63 /* xcsort in Resources */ = {isa = PBXBuildFile; fileRef = C64E3DA62CC9141200364B63 /* xcsort */; };
-		C64E3DAD2CC9141200364B63 /* skoda_tender_ios.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64E3DA82CC9141200364B63 /* skoda_tender_ios.swift */; };
 		C6D69D552CC7FBBE0048B5CA /* .swiftformat in Resources */ = {isa = PBXBuildFile; fileRef = C6D69D542CC7FBB80048B5CA /* .swiftformat */; };
 		C6D69D572CC7FC3A0048B5CA /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = C6D69D562CC7FC3A0048B5CA /* .gitignore */; };
 		C6D69D5D2CC84C0E0048B5CA /* SKODANext-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D69D5C2CC84C0E0048B5CA /* SKODANext-Regular.ttf */; };
@@ -45,9 +42,6 @@
 
 /* Begin PBXFileReference section */
 		0463F1832CC85ADA0013FA35 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
-		C64E3DA52CC9141200364B63 /* cleanUp_pbxproj.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = cleanUp_pbxproj.sh; sourceTree = "<group>"; };
-		C64E3DA62CC9141200364B63 /* xcsort */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = xcsort; sourceTree = "<group>"; };
-		C64E3DA82CC9141200364B63 /* skoda_tender_ios.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = skoda_tender_ios.swift; sourceTree = "<group>"; };
 		C6A3B7D32CC7A344007E61C9 /* skoda-tender-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "skoda-tender-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6A3B7E62CC7A348007E61C9 /* skoda-tender-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "skoda-tender-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6A3B7F02CC7A348007E61C9 /* skoda-tender-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "skoda-tender-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,31 +142,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C64E3DA72CC9141200364B63 /* scripts */ = {
-			isa = PBXGroup;
-			children = (
-				C64E3DA52CC9141200364B63 /* cleanUp_pbxproj.sh */,
-				C64E3DA62CC9141200364B63 /* xcsort */,
-			);
-			path = scripts;
-			sourceTree = "<group>";
-		};
-		C64E3DA92CC9141200364B63 /* skoda-tender-ios */ = {
-			isa = PBXGroup;
-			children = (
-				C64E3DA82CC9141200364B63 /* skoda_tender_ios.swift */,
-			);
-			path = "skoda-tender-ios";
-			sourceTree = "<group>";
-		};
-		C64E3DAA2CC9141200364B63 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				C64E3DA92CC9141200364B63 /* skoda-tender-ios */,
-			);
-			path = Sources;
-			sourceTree = "<group>";
-		};
 		C6A3B7CA2CC7A344007E61C9 = {
 			isa = PBXGroup;
 			children = (
@@ -180,9 +149,7 @@
 				C6D69D562CC7FC3A0048B5CA /* .gitignore */,
 				C6D69D542CC7FBB80048B5CA /* .swiftformat */,
 				C6D69D722CC862830048B5CA /* .github */,
-				C64E3DA72CC9141200364B63 /* scripts */,
 				C6D69D5B2CC8402E0048B5CA /* Fonts */,
-				C64E3DAA2CC9141200364B63 /* Sources */,
 				C6A3B7D52CC7A344007E61C9 /* skoda-tender-ios */,
 				C6A3B7E92CC7A348007E61C9 /* skoda-tender-iosTests */,
 				C6A3B7F32CC7A348007E61C9 /* skoda-tender-iosUITests */,
@@ -345,8 +312,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C64E3DAB2CC9141200364B63 /* cleanUp_pbxproj.sh in Resources */,
-				C64E3DAC2CC9141200364B63 /* xcsort in Resources */,
 				C6D69D572CC7FC3A0048B5CA /* .gitignore in Resources */,
 				C6D69D552CC7FBBE0048B5CA /* .swiftformat in Resources */,
 				0463F1842CC85ADA0013FA35 /* .swiftlint.yml in Resources */,
@@ -406,7 +371,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C64E3DAD2CC9141200364B63 /* skoda_tender_ios.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
