@@ -11,9 +11,9 @@ struct ProfileView: View {
                 ServicesHeaderView().padding(17)
                 ScrollView(.horizontal) {
                     HStack {
-                        CardView().padding(.leading, 17)
-                        CardView().padding(.leading, 5)
-                        CardView().padding(.horizontal, 5)
+                        CardView(title: "Ambient Lighting", state: "EXPIRED", expirationDate: "on 22 Aug 2024").padding(.leading, 17)
+                        CardView(title: "Ambient Lighting", state: "EXPIRED", expirationDate: "on 22 Aug 2024").padding(.leading, 5)
+                        CardView(title: "Ambient Lighting", state: "EXPIRED", expirationDate: "on 22 Aug 2024").padding(.horizontal, 5)
                     }
                 }
                 HStack {
@@ -23,7 +23,7 @@ struct ProfileView: View {
                             .foregroundColor(index == self.viewModel.currentPage ? .accentColor : .white)
                             .onTapGesture(perform: { self.viewModel.currentPage = index })
                     }
-                }
+                }.padding(20)
 
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Ambient Lighting - additional functions")
@@ -33,6 +33,7 @@ struct ProfileView: View {
                     AutoRenewView()
                     Spacer()
                     HStack(alignment: .center) {
+                        Spacer()
                         Button(action: {
                             if let yourURL = URL(string: "https://shop.skoda-connect.com") {
                                 UIApplication.shared.open(yourURL, options: [:], completionHandler: nil)
@@ -40,10 +41,15 @@ struct ProfileView: View {
 
                         }) {
                             Text("Purchase")
-                                .font(.custom("SKODANext-Light", size: 14))
-                                .foregroundStyle(.white)
-                                .padding(10)
-                        }.buttonStyle(.bordered)
+                                .font(.custom("SKODANext-Light", size: 16))
+                                .foregroundStyle(.black)
+                                .padding(.vertical, 10)
+                                .frame(width: 300, height: 52)
+                        }
+                        .tint(.accent)
+                        .controlSize(.small)
+                        .buttonStyle(.borderedProminent)
+                        Spacer()
                     }
                 }
                 .padding(17)
@@ -74,6 +80,36 @@ struct TimeleftHeaderView: View {
     }
 }
 
+struct PillsView: View {
+    @State private var doesClose = true
+    var body: some View {
+        ScrollView(.horizontal) {
+            HStack {
+                Button("Ambient Lighting") {
+                    print("Button pressed!")
+                }
+                .padding(10)
+                .foregroundColor(.white)
+                .background(.neutral800)
+                .clipShape(Capsule())
+                Button("Ambient Lighting") {
+                    print("Button pressed!")
+                }
+                padding(10)
+                    .foregroundStyle(.white)
+                    .background(.neutral800)
+                    .clipShape(Capsule())
+                Button("Ambient Lighting") {
+                    print("Button pressed!")
+                }
+                padding(10)
+                    .background(.neutral800)
+                    .clipShape(Capsule())
+            }
+        }
+    }
+}
+
 struct AutoRenewView: View {
     @State private var doesClose = true
 
@@ -96,7 +132,6 @@ struct AutoRenewView: View {
         Text("Experience perfect comfort with interior lighting. The ambient LED lighting includes footwell illumination and offers up to thirty attractive color options.")
             .font(.custom("SKODANext-Regular", size: 18))
             .foregroundStyle(.white)
-            .padding(10)
     }
 }
 
