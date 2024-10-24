@@ -40,6 +40,7 @@ struct VehicleTypeView: View {
             Text("Unlocked").font(.custom("SKODANext-Bold", size: 20))
                 .foregroundStyle(.white)
                 .cornerRadius(25)
+                .padding(.horizontal, 10)
             Spacer()
         }
         .padding(.horizontal, 20)
@@ -48,20 +49,22 @@ struct VehicleTypeView: View {
 
 struct BatteryTypeView: View {
     var body: some View {
-        Text("Battery Range").font(.custom("SKODANext-Light", size: 14))
-            .foregroundStyle(.white).padding(.horizontal, 20)
+        Text("Battery Range")
+            .font(.custom("SKODANext-Light", size: 14))
+            .foregroundStyle(.white)
+            .padding(.horizontal, 20)
         HStack {
             Image(.batteryIcon)
                 .foregroundColor(.neutral200)
-            Text("61%/276 km").font(.custom("SKODANext-Bold", size: 20))
+            Text("61%/276 km")
+                .font(.custom("SKODANext-Bold", size: 20))
                 .foregroundStyle(.white)
-                .cornerRadius(25)
+                .padding(.horizontal, 10)
             Spacer()
             Image(.plugIcon)
                 .foregroundColor(.neutral200)
             Text("Not plugged in").font(.custom("SKODANext-Light", size: 12))
                 .foregroundStyle(.white)
-                .cornerRadius(25)
         }
         .padding(.horizontal, 20)
     }
@@ -72,23 +75,30 @@ struct TemperatureTypeView: View {
 
     var body: some View {
         HStack {
-            Text("Target Temperature").font(.custom("SKODANext-Light", size: 14))
-                .foregroundStyle(.white).padding(.horizontal, 20)
-            HStack {
-                Image(.notificationBell)
-                    .foregroundColor(.neutral200)
-                Text("21ºC").font(.custom("SKODANext-Bold", size: 20))
+            VStack(alignment: .leading) {
+                Text("Target Temperature")
+                    .font(.custom("SKODANext-Light", size: 14))
                     .foregroundStyle(.white)
-                    .cornerRadius(25)
-                Spacer()
-            }
-            .padding(.horizontal, 20)
-            Toggle("Activated", isOn: $doesClose)
-                .toggleStyle(.switch)
-                .tint(.electric300)
-                .fixedSize()
-                .scaleEffect(0.8)
-                .offset(x: 5)
+                HStack {
+                    Image(.notificationBell)
+                        .foregroundColor(.neutral200)
+                    Text("21ºC")
+                        .font(.custom("SKODANext-Bold", size: 20))
+                        .foregroundStyle(.white)
+                    Spacer()
+                }
+            }.padding(.horizontal, 20)
+            VStack {
+                Toggle("", isOn: $doesClose)
+                    .toggleStyle(.switch)
+                    .tint(.electric300)
+                    .fixedSize()
+                    .scaleEffect(0.8)
+                    .offset(x: -5)
+                Text("Activated")
+                    .font(.custom("SKODANext-Light", size: 12))
+                    .foregroundStyle(.white)
+            }.padding(.horizontal, 20)
         }
     }
 }
