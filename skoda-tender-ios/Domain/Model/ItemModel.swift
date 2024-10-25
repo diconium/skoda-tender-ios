@@ -8,6 +8,10 @@
 import Foundation
 import SwiftData
 
+// MARK: - ItemModel
+
+/// Represents an item with a timestamp.
+/// - Parameter timestamp: The date and time when the item was created or modified.
 @Model
 final class ItemModel {
     var timestamp: Date

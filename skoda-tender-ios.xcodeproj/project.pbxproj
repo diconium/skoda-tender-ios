@@ -123,8 +123,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04C022832CCA98410066157A /* FirebaseMessaging in Frameworks */,
 				0463F1B22CC85D5D0013FA35 /* Alamofire in Frameworks */,
+				04C022832CCA98410066157A /* FirebaseMessaging in Frameworks */,
 				0463F1B52CC85D770013FA35 /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -319,10 +319,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04C022872CCAA5DD0066157A /* GoogleService-Info.plist in Resources */,
 				C6D69D572CC7FC3A0048B5CA /* .gitignore in Resources */,
 				C6D69D552CC7FBBE0048B5CA /* .swiftformat in Resources */,
 				0463F1842CC85ADA0013FA35 /* .swiftlint.yml in Resources */,
+				04C022872CCAA5DD0066157A /* GoogleService-Info.plist in Resources */,
 				C6D69D6D2CC84C3F0048B5CA /* SKODANext-Black.ttf in Resources */,
 				C6D69D6B2CC84C3B0048B5CA /* SKODANext-BlackExpanded.ttf in Resources */,
 				C6D69D692CC84C360048B5CA /* SKODANext-BlackItalic.ttf in Resources */,

@@ -1,6 +1,7 @@
 import Foundation
 import SwiftData
 
+/// Represents a menu item with text and icon.
 @Model
 final class MenuItemModel {
     var text: String

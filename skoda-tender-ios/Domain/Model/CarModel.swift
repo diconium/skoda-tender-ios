@@ -8,6 +8,7 @@
 import Foundation
 import SwiftData
 
+/// A model representing a car with various attributes.
 @Model
 final class CarModel {
     var id: Int
@@ -17,6 +18,14 @@ final class CarModel {
     var year: Int
     var text: String
 
+    /// Initializes a new instance of `CarModel`.
+    /// - Parameters:
+    ///   - id: Unique identifier for the car.
+    ///   - vin: Vehicle Identification Number.
+    ///   - brand: Brand of the car.
+    ///   - model: Model of the car.
+    ///   - year: Manufacturing year of the car.
+    ///   - text: Descriptive text about the car.
     init(id: Int, vin: String, brand: String, model: String, year: Int, text: String) {
         self.id = id
         self.vin = vin
@@ -26,6 +35,8 @@ final class CarModel {
         self.text = text
     }
 
+    /// Convenience initializer to create a `CarModel` from a `CarDataModel`.
+    /// - Parameter carDataModel: The data model containing car information.
     convenience init(carDataModel: CarDataModel) {
         self.init(id: UUID().hashValue,
                   vin: carDataModel.vin,

@@ -7,6 +7,7 @@
 
 // MARK: - IncludedServiceDataModel
 
+/// A model representing an included service with its details.
 struct IncludedServiceDataModel: Codable, Sendable {
     let id: Int
     let name: String
