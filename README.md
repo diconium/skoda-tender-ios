@@ -1,13 +1,11 @@
 # Table of Contents
 1. [Description](#description)
-2. [Arhitecture](#arhitecture)
-5. [Structure](#structure)
-6. [Running the tests](#running-the-tests)
-7. [Deployment](#deployment)
-8. [Dependencies](#dependencies)
-9. [Task board](#task-board)
-10. [Design](#design)
-11. [API](#api)
+2. [Architecture](#architecture)
+3. [Structure](#structure)
+4. [Deployment](#deployment)
+5. [Dependencies](#dependencies)
+6. [Design](#design)
+7. [API](#api)
 
 # skoda-tender-ios
 
@@ -34,11 +32,6 @@ The application is designed to use Škoda Connect Services, ensuring seamless ca
 * "Data": Files or classes related to communicating with an external API. This could include code for making HTTP requests to a web server, parsing responses, and handling any errors that may occur.
 * "Presentation": The source code files for views and view models.
 * "Shared": Files or resources that are shared across multiple parts of the project. Such as utility classes, global constants, or reusable UI elements.
-# Running the tests
-<p>The Hello World project can be tested using the built-in framework XCTest.<br>
-To start testing the project, you will need to create a new test target in your Xcode project, 
-and then add test files to that target.<br>These test files should be placed in the "test" folder, following the project structure.
-Once you have created your test files, you can write test functions using the XCTest</p>
 
 # Deployment
 Keep in mind that deploying an iOS app to the App Store requires having an Apple Developer account.
