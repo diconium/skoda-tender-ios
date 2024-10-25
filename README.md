@@ -21,10 +21,10 @@ The application is designed to use Škoda Connect Services, ensuring seamless ca
 * Model has any necessary data or business logic needed to generate the app.
 * View is responsible for displaying the message to the user, such as printing it to the console.
 * ViewModel handles any user input or interactions and update the Model and View as needed.
-* Project doesn't have a database or any other complex elements.<br><br>
-* Project uses SwiftUI for the views.<br><br>
-* Project only as dark theme.<br><br>
-* Project Follows clean Architecture.<br><br>
+* Project doesn't have a database or any other complex elements.
+* Project uses SwiftUI for the views.
+* Project only as dark theme.
+* Project Follows clean Architecture.
 
 
 # Structure has any necessary data or business logic
