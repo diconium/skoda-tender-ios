@@ -29,7 +29,6 @@ struct DetailView: View {
 
         HStack(alignment: .top) {
             VStack {
-                ServicesHeaderView().padding(17)
                 PillsView().padding(17)
                 ScrollViewReader { _ in
                     CardListView(viewModel: viewModel, linkACtive: false)
@@ -87,6 +86,7 @@ struct DetailView: View {
         .task {
             viewModel.getSubscriptionsInfo()
         }
+        .navigationTitle("Payment Services")
         .background(.neutral900)
     }
 
