@@ -17,22 +17,18 @@ struct ContentView: View {
             ForEach(items, id: \.self) { item in
                 VStack {
                     Spacer()
-                    if item.icon == "car" {
-                        CarView()
-                    }
-                    if item.icon == "person" {
-                        ProfileView()
-                    }
+                    CarView()
                     Divider()
                     Spacer()
                 }
-                .background(Color.neutral900)
                 .tabItem {
                     Label(item.text,
                           systemImage: item.icon)
                 }
+                .background(.neutral900)
             }
-        }
+        }.preferredColorScheme(.dark)
+            .ignoresSafeArea(edges: .all)
     }
 }
 

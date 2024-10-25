@@ -14,35 +14,51 @@ struct CarView: View {
                             ConnectionView()
                         }
                         .padding(.horizontal, 20)
-                        .padding(.top, 20)
+                        .padding(.top, 10)
                         Image(.car)
                             .resizable()
-                            .aspectRatio(contentMode: .fill)
+                            .aspectRatio(contentMode: .fit)
                             .clipShape(RoundedRectangle(cornerRadius: 25))
                             .padding(0)
                     }
                     CarInfoView(type: CarInfoView.ViewType.vehicle).padding(.horizontal, 17)
                     CarInfoView(type: CarInfoView.ViewType.battery).padding(.horizontal, 17)
                     CarInfoView(type: CarInfoView.ViewType.temperature).padding(.horizontal, 17)
-                    ServicesHeaderView().padding(17)
-                    ScrollView(.horizontal) {
-                        HStack {
-                            ForEach(viewModel.subscriptionList, id: \.self) { subscription in
-                                CardView(title: subscription?.name ?? "",
-                                         state: subscription?.status ?? "",
-                                         expirationDate: DateHelper.format(date: subscription?.endDate ?? Date.distantFuture))
-                            }.padding(17)
-                        }
-                    }
+                    ServicesHeaderView().padding(.top, 10).padding(.horizontal, 17)
+                    CardListView(viewModel: viewModel, linkACtive: true).padding(.horizontal, 17)
                 }
                 .task {
                     viewModel.getCarInfo()
                     viewModel.getSubscriptionsInfo()
                 }
                 .padding(0)
-                .padding(.bottom, 10)
             }
         }
+    }
+}
+
+struct CardListView: View {
+    @StateObject var viewModel = CarViewModel()
+    var linkACtive: Bool
+
+    var body: some View {
+        ScrollView(.horizontal) {
+            HStack {
+                ForEach(viewModel.subscriptionList, id: \.self) {
+                    subscription in
+                    if let subscription {
+                        CardView(subscription: subscription, linkActive: linkACtive)
+                            .onAppear {
+                                viewModel.currentPage = viewModel.subscriptionList[0]
+                            }
+                    }
+                }.padding(5)
+            }
+            .scrollTargetLayout()
+        }
+        .scrollTargetBehavior(.viewAligned)
+        .scrollPosition(id: $viewModel.currentPage)
+        .scrollIndicators(.never)
     }
 }
 
@@ -65,7 +81,7 @@ class CarViewModel: ObservableObject {
     @Published var subscriptionList: [SubscriptionModel?] = []
     @Published var isError: Bool = false
 
-    var currentPage: Int = 0
+    @Published var currentPage: SubscriptionModel?
 
     func getCarInfo() {
         getCarInfoUseCase.execute { useCaseResult in
@@ -134,9 +150,6 @@ struct ServicesHeaderView: View {
                 .font(.custom("SKODANext-Bold", size: 22))
                 .foregroundStyle(.white)
             Spacer()
-            Text("See All")
-                .font(.custom("SKODANext-Regular", size: 14))
-                .foregroundStyle(.electric300)
         }
     }
 }
