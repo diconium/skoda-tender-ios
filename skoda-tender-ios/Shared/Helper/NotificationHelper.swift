@@ -14,7 +14,7 @@ class NotificationHelper {
         center.getDeliveredNotifications { notificationList in
 
             let titleList = notificationList.compactMap { $0.request.content.title }
-            if !titleList.contains(title) { // only add if it's not already notified
+//            if !titleList.contains(title) { // only add if it's not already notified
                 let content = UNMutableNotificationContent()
                 content.title = title
                 content.body = message
@@ -23,7 +23,7 @@ class NotificationHelper {
                 let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
                 let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
                 center.add(request)
-            }
+//            }
         }
     }
 }

@@ -30,7 +30,7 @@ struct CarView: View {
                             ForEach(viewModel.subscriptionList, id: \.self) { subscription in
                                 CardView(title: subscription?.name ?? "",
                                          state: subscription?.status ?? "",
-                                         expirationDate: subscription?.endDate ?? "")
+                                         expirationDate: DateHelper.format(date: subscription?.endDate ?? Date.distantFuture))
                             }.padding(17)
                         }
                     }

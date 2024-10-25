@@ -18,10 +18,10 @@ final class SubscriptionModel {
     var price: Double
     var includedServices: [IncludedServiceDataModel]?
     var status: String
-    var startDate: String
-    var endDate: String?
+    var startDate: Date
+    var endDate: Date?
 
-    init(id: Int, name: String, sDescription: String? = nil, imageLink: String? = nil, length: Int, price: Double, includedServices: [IncludedServiceDataModel]? = nil, status: String, startDate: String, endDate: String? = nil) {
+    init(id: Int, name: String, sDescription: String? = nil, imageLink: String? = nil, length: Int, price: Double, includedServices: [IncludedServiceDataModel]? = nil, status: String, startDate: Date, endDate: Date? = nil) {
         self.id = id
         self.name = name
         self.sDescription = sDescription
@@ -34,16 +34,19 @@ final class SubscriptionModel {
         self.endDate = endDate
     }
 
-    convenience init(subscriptionDataModel: SubscriptionDataModel) {
-        self.init(id: UUID().hashValue,
-                  name: subscriptionDataModel.name,
-                  sDescription: subscriptionDataModel.description,
-                  imageLink: subscriptionDataModel.imageLink,
-                  length: subscriptionDataModel.length,
-                  price: subscriptionDataModel.price,
-                  includedServices: subscriptionDataModel.includedServices,
-                  status: subscriptionDataModel.status,
-                  startDate: subscriptionDataModel.startDate,
-                  endDate: subscriptionDataModel.endDate)
+    init(subscriptionDataModel: SubscriptionDataModel) {
+        self.id = UUID().hashValue
+        self.name = subscriptionDataModel.name
+        self.sDescription = subscriptionDataModel.description
+        self.imageLink = subscriptionDataModel.imageLink
+        self.length = subscriptionDataModel.length
+        self.price = subscriptionDataModel.price
+        self.includedServices = subscriptionDataModel.includedServices
+        self.status = subscriptionDataModel.status
+        self.startDate = DateHelper.parse(date: subscriptionDataModel.startDate, format: "yyyy-MM-dd'T'HH:mm:ss")! //dont add a default value so we dont hide data errors, this should break on a nil value!
+        if let subscriptionDataModelEndDate = subscriptionDataModel.endDate {
+
+            self.endDate = DateHelper.parse(date: subscriptionDataModelEndDate, format: "yyyy-MM-dd'T'HH:mm:ss")
+        }
     }
 }
