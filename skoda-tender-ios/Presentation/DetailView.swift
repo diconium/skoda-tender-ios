@@ -42,13 +42,16 @@ struct DetailView: View {
                             timeleftHeaderView
                             autoRenewView
                             if state == ViewState.active {
-                                Text("Included Services")
-                                    .font(.custom("SKODANext-Bold", size: 16))
-                                    .foregroundColor(SwiftUI.Color.white)
-                                    .padding(.bottom, 10)
-                                AccordionView()
-                                AccordionView()
-                                AccordionView()
+                                HStack {
+                                    Text("Included Services")
+                                        .font(.custom("SKODANext-Bold", size: 16))
+                                        .foregroundColor(SwiftUI.Color.white)
+                                        .padding(.vertical, 10)
+                                    Spacer()
+                                }
+                                AccordionView(title: "Pay to Fuel")
+                                AccordionView(title: "Pay to Park")
+                                AccordionView(title: "Infotainment Online")
                             }
                         }
                         Spacer()
@@ -135,12 +138,15 @@ struct DetailView: View {
                     .background(.emerald800)
                 } else { EmptyView() }
             }
-            Text("Experience perfect comfort with interior lighting." +
-                "The ambient LED lighting includes footwell illumination" +
-                "and offers up to thirty attractive color options.")
-                .font(.custom("SKODANext-Regular", size: 18))
-                .padding(.top, 10)
-                .foregroundStyle(.white)
+            HStack {
+                Text("Experience perfect comfort with interior lighting." +
+                    "The ambient LED lighting includes footwell illumination" +
+                    "and offers up to thirty attractive color options.")
+                    .font(.custom("SKODANext-Regular", size: 18))
+                    .padding(.top, 10)
+                    .foregroundStyle(.white)
+                Spacer()
+            }
         }
     }
 }
@@ -177,6 +183,7 @@ struct PillsView: View {
 }
 
 struct AccordionView: View {
+    var title: String
     let text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
         + "Aliquam sed mauris sit amet ex finibus suscipit."
         + "Nullam dapibus pulvinar eros, eget fringilla enim finibus ac. "
@@ -184,7 +191,7 @@ struct AccordionView: View {
         "Proin dictum ligula vel interdum hendrerit."
     var body: some View {
         VStack {
-            DisclosureGroup("Pay to Fuel") {
+            DisclosureGroup(title) {
                 VStack {
                     Text(text)
                 }
