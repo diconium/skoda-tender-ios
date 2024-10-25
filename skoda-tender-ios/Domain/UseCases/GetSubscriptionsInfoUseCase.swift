@@ -70,8 +70,10 @@ struct GetSubscriptionsInfoUseCase: GetSubscriptionsInfoProtocol {
             return false
         }
         if let aboutToExpireModel = aboutToExpireModels.first {
-            NotificationHelper.showUserNotification(title: "Subscription is about to expire",
-                                                    message: "Your subscription '\(aboutToExpireModel.name)' is about to expire, click here to renew it.")
+            NotificationHelper.showUserNotification(
+                title: "Subscription is about to expire",
+                message: "Your subscription '\(aboutToExpireModel.name)' is about to expire, click here to renew it."
+            )
         }
     }
 }

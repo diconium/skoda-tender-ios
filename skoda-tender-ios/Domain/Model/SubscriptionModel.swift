@@ -65,7 +65,8 @@ final class SubscriptionModel {
         price = subscriptionDataModel.price
         includedServices = subscriptionDataModel.includedServices
         status = subscriptionDataModel.status
-        startDate = DateHelper.parse(date: subscriptionDataModel.startDate, format: "yyyy-MM-dd'T'HH:mm:ss")! // dont add a default value so we dont hide data errors, this should break on a nil value!
+        // dont add a default value so we dont hide data errors, this should break on a nil value!
+        startDate = DateHelper.parse(date: subscriptionDataModel.startDate, format: "yyyy-MM-dd'T'HH:mm:ss")!
         if let subscriptionDataModelEndDate = subscriptionDataModel.endDate {
             endDate = DateHelper.parse(date: subscriptionDataModelEndDate, format: "yyyy-MM-dd'T'HH:mm:ss")
         }
