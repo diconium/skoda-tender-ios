@@ -36,7 +36,9 @@ final class SubscriptionModel {
     ///   - status: The current status of the subscription.
     ///   - startDate: The start date of the subscription.
     ///   - endDate: An optional end date of the subscription.
-    init(id: Int, name: String, sDescription: String? = nil, imageLink: String? = nil, length: Int, price: Double, includedServices: [IncludedServiceDataModel]? = nil, status: String, startDate: Date, endDate: Date? = nil) {
+    init(id: Int, name: String, sDescription: String? = nil, imageLink: String? = nil, length: Int,
+         price: Double, includedServices: [IncludedServiceDataModel]? = nil, status: String, startDate: Date, endDate: Date? = nil)
+    {
         self.id = id
         self.name = name
         self.sDescription = sDescription

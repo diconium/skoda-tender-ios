@@ -21,8 +21,11 @@ struct DetailView: View {
             "Extend for one extra year"
         } else { "Expired: Renew for one year" }
 
-        let state = if viewModel.currentPage?.status == "Activated" { ViewState.active }
-        else { ViewState.expired }
+        let state = if viewModel.currentPage?.status == "Activated" {
+            ViewState.active
+        } else {
+            ViewState.expired
+        }
 
         HStack(alignment: .top) {
             VStack {
@@ -89,8 +92,11 @@ struct DetailView: View {
 
     var timeleftHeaderView: some View {
         HStack {
-            if viewModel.currentPage?.status == "Activated" { Image(.ellpseElectric300) }
-            else { Image(.ellipseRed) }
+            if viewModel.currentPage?.status == "Activated" {
+                Image(.ellpseElectric300)
+            } else {
+                Image(.ellipseRed)
+            }
 
             if viewModel.currentPage?.status == "Activated" {
                 Text("ACTIVE")
@@ -129,7 +135,9 @@ struct DetailView: View {
                     .background(.emerald800)
                 } else { EmptyView() }
             }
-            Text("Experience perfect comfort with interior lighting. The ambient LED lighting includes footwell illumination and offers up to thirty attractive color options.")
+            Text("Experience perfect comfort with interior lighting." +
+                "The ambient LED lighting includes footwell illumination" +
+                "and offers up to thirty attractive color options.")
                 .font(.custom("SKODANext-Regular", size: 18))
                 .padding(.top, 10)
                 .foregroundStyle(.white)

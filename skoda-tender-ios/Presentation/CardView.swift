@@ -42,7 +42,11 @@ struct TimeleftHeaderBreakLineView: View {
     var expirationDate: String
 
     var body: some View {
-        let image: ImageResource = if state == "Activated" { .ellpseElectric300 } else { .ellipseRed }
+        let image: ImageResource = if state == "Activated" {
+            .ellpseElectric300
+        } else {
+            .ellipseRed
+        }
 
         VStack(alignment: .leading) {
             HStack {
