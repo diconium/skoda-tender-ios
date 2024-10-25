@@ -67,11 +67,13 @@ struct DetailView: View {
                             .tint(.accent)
                             .controlSize(.small)
                             .buttonStyle(.borderedProminent)
+                            .padding(.bottom, 40)
                             Spacer()
                         }
                     }
-                    .padding(17)
+                    .padding(.horizontal, 22)
                     .padding(.top, 17)
+                    .padding(.bottom, 0)
                     .background(.neutral800)
                     .addBorder(.neutral800, width: 1, cornerRadius: 20)
                     Spacer()
