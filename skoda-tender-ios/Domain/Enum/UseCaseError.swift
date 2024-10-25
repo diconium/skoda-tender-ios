@@ -7,6 +7,7 @@
 
 // MARK: Error use cases
 
+/// An error that can occur during the use of a use case.
 enum UseCaseError: Error {
     case networkError, decodingError, undefinedError
 }

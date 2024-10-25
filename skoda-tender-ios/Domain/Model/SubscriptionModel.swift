@@ -8,6 +8,9 @@
 import Foundation
 import SwiftData
 
+
+/// A model representing a subscription with various attributes such as name, description, image link, length, price,
+/// included services, status, start date, and optional end date.
 @Model
 final class SubscriptionModel {
     var id: Int
@@ -21,6 +24,19 @@ final class SubscriptionModel {
     var startDate: Date
     var endDate: Date?
 
+    /// Initializes a new instance of `SubscriptionModel` with the specified parameters.
+    ///
+    /// - Parameters:
+    ///   - id: The unique identifier for the subscription.
+    ///   - name: The name of the subscription.
+    ///   - sDescription: An optional description of the subscription.
+    ///   - imageLink: An optional link to an image representing the subscription.
+    ///   - length: The length of the subscription in days.
+    ///   - price: The price of the subscription.
+    ///   - includedServices: An optional array of services included in the subscription.
+    ///   - status: The current status of the subscription.
+    ///   - startDate: The start date of the subscription.
+    ///   - endDate: An optional end date of the subscription.
     init(id: Int, name: String, sDescription: String? = nil, imageLink: String? = nil, length: Int, price: Double, includedServices: [IncludedServiceDataModel]? = nil, status: String, startDate: Date, endDate: Date? = nil) {
         self.id = id
         self.name = name
@@ -34,6 +50,11 @@ final class SubscriptionModel {
         self.endDate = endDate
     }
 
+    /// Initializes a new instance of `SubscriptionModel` using a `SubscriptionDataModel`.
+    ///
+    /// - Parameter subscriptionDataModel: The data model containing subscription details.
+    /// - Note: The `id` is generated using `UUID().hashValue`. The `startDate` is parsed using the format "yyyy-MM-dd'T'HH:mm:ss".
+    ///         If `subscriptionDataModel.endDate` is provided, it is parsed similarly.
     init(subscriptionDataModel: SubscriptionDataModel) {
         self.id = UUID().hashValue
         self.name = subscriptionDataModel.name

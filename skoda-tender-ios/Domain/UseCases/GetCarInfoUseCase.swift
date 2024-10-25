@@ -15,6 +15,11 @@ private protocol GetCarInfoProtocol {
 
 // MARK: GetCarInfoUseCase
 
+/// A use case responsible for retrieving car information.
+/// It utilizes a repository to fetch the status and maps the result to a `CarModel`.
+///
+/// - Parameters:
+///   - useCaseResult: A closure that returns a `Result` containing either a `CarModel` on success or a `UseCaseError` on failure.
 struct GetCarInfoUseCase: GetCarInfoProtocol {
     let repository: StatusRepository
 

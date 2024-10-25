@@ -7,6 +7,7 @@
 
 // MARK: - CarDataModel
 
+/// A model representing car data with vehicle identification number, brand, model, and year.
 struct CarDataModel: Codable, Sendable {
     let vin: String
     let brand: String

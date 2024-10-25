@@ -8,7 +8,10 @@
 import Foundation
 import UserNotifications
 
+/// A helper class to show user notifications.
 class NotificationHelper {
+    
+    /// Shows a user notification with a title and message.
     public static func showUserNotification(title: String, message: String = String()) {
         let center = UNUserNotificationCenter.current()
         center.getDeliveredNotifications { notificationList in

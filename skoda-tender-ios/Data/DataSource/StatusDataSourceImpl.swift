@@ -8,6 +8,7 @@
 import Alamofire
 import Foundation
 
+/// A data source for retrieving the status of a car.
 struct StatusDataSourceImpl: StatusDataSource {
     func getStatus(completionHandler: @escaping NetworkDataResponseHandler) {
         AF.request(Constants.API.baseURL, method: .get)

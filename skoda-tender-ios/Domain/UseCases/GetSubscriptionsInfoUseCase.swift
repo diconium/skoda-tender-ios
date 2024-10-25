@@ -9,12 +9,23 @@ import Foundation
 
 // MARK: Protocol GetSubscriptionsInfoProtocol
 
+/// Protocol to define the use case for fetching subscription information.
+///
+/// The `GetSubscriptionsInfoProtocol` is responsible for executing the use case
+/// that retrieves a list of `SubscriptionModel` objects. The result of the execution
+/// is returned asynchronously via a completion handler.
+///
+/// - Parameters:
+///   - useCaseResult: A closure that is called with the result of the use case execution.
+///                    It contains either an array of `SubscriptionModel` on success or
+///                    a `UseCaseError` on failure.
 private protocol GetSubscriptionsInfoProtocol {
     func execute(useCaseResult: @escaping (Result<[SubscriptionModel], UseCaseError>) -> Void)
 }
 
 // MARK: GetSubscriptionsInfoUseCase
 
+/// A use case responsible for retrieving subscription information.
 struct GetSubscriptionsInfoUseCase: GetSubscriptionsInfoProtocol {
     let repository: StatusRepository
 
@@ -38,6 +49,15 @@ struct GetSubscriptionsInfoUseCase: GetSubscriptionsInfoProtocol {
         }
     }
 
+    /// Handles subscriptions that are about to expire.
+    ///
+    /// This function filters the list of `SubscriptionModel` to find those that have a non-nil
+    /// end date and are currently activated. It then checks if any of these subscriptions are
+    /// about to expire within a specified number of days. If a subscription is found to be
+    /// expiring soon, a user notification is displayed to prompt the user to renew it.
+    ///
+    /// - Parameter subscriptionDataModelList: An array of `SubscriptionModel` objects to be checked
+    ///   for expiring subscriptions.
     private func handleExpiringSubscriptions(subscriptionDataModelList: [SubscriptionModel]) {
         let nonNullEndDateModels = subscriptionDataModelList.filter { $0.endDate != nil && $0.status == "Activated" }
         let aboutToExpireModels = nonNullEndDateModels.filter {
