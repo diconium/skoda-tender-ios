@@ -14,13 +14,14 @@ struct DetailView: View {
 
     @StateObject var viewModel = CarViewModel()
     @State var subscription: SubscriptionModel
+    @State private var doesClose = true
 
     var body: some View {
-        let buttonText: String = if subscription.status == "Activated" {
-            "Extend"
-        } else { "Purchase" }
+        let buttonText: String = if viewModel.currentPage?.status == "Activated" {
+            "Extend for one extra year"
+        } else { "Expired: Renew for one year" }
 
-        var state = if viewModel.currentPage?.status == "Activated" { ViewState.active }
+        let state = if viewModel.currentPage?.status == "Activated" { ViewState.active }
         else { ViewState.expired }
 
         HStack(alignment: .top) {
@@ -30,13 +31,14 @@ struct DetailView: View {
                 ScrollViewReader { _ in
                     CardListView(viewModel: viewModel, linkACtive: false)
                         .padding(.horizontal, 17)
+                        .padding(.bottom, 20)
                     VStack(alignment: .leading, spacing: 10) {
                         Text("Ambient Lighting - additional functions")
                             .font(.custom("SKODANext-Bold", size: 24))
                             .foregroundColor(SwiftUI.Color.white)
                         ScrollView(.vertical) {
                             timeleftHeaderView
-                            AutoRenewView()
+                            autoRenewView
                             if state == ViewState.active {
                                 Text("Included Services")
                                     .font(.custom("SKODANext-Bold", size: 16))
@@ -57,7 +59,7 @@ struct DetailView: View {
 
                             }, label: {
                                 Text(buttonText)
-                                    .font(.custom("SKODANext-Regular", size: 16))
+                                    .font(.custom("SKODANext-Bold", size: 18))
                                     .foregroundStyle(.black)
                                     .padding(.vertical, 10)
                                     .frame(width: 300, height: 52)
@@ -98,10 +100,37 @@ struct DetailView: View {
                     .foregroundStyle(.white)
             }
 
-            Text("on" + DateHelper.format(date: subscription.endDate ?? Date.distantFuture))
+            Text("on " + DateHelper.format(date: subscription.endDate ?? Date.distantFuture, format: "yyyy-MM-dd"))
                 .font(.custom("SKODANext-Light", size: 14))
                 .foregroundStyle(.neutral200)
             Spacer()
+        }
+    }
+
+    var autoRenewView: some View {
+        VStack {
+            HStack {
+                if viewModel.currentPage?.status == "Activated" {
+                    HStack {
+                        Text("Auto-Renew")
+                            .font(.custom("SKODANext-Light", size: 14))
+                            .foregroundStyle(.neutral200)
+                        Spacer()
+                        Toggle("", isOn: $doesClose)
+                            .toggleStyle(.switch)
+                            .tint(.electric300)
+                            .fixedSize()
+                            .scaleEffect(0.8)
+                    }
+                    .frame(height: 44)
+                    .padding(.horizontal, 17)
+                    .background(.emerald800)
+                } else { EmptyView() }
+            }
+            Text("Experience perfect comfort with interior lighting. The ambient LED lighting includes footwell illumination and offers up to thirty attractive color options.")
+                .font(.custom("SKODANext-Regular", size: 18))
+                .padding(.top, 10)
+                .foregroundStyle(.white)
         }
     }
 }
@@ -153,29 +182,6 @@ struct AccordionView: View {
         }
         .background(.neutral900)
         .addBorder(.neutral900, width: 1, cornerRadius: 5)
-    }
-}
-
-struct AutoRenewView: View {
-    @State private var doesClose = true
-
-    var body: some View {
-        HStack {
-            Text("Auto-Renew")
-                .font(.custom("SKODANext-Light", size: 14))
-                .foregroundStyle(.neutral200)
-            Spacer()
-            Toggle("", isOn: $doesClose)
-                .toggleStyle(.switch)
-                .tint(.electric300)
-                .fixedSize()
-                .scaleEffect(0.8)
-        }
-        .frame(height: 44)
-        .background(.emerald800)
-        Text("Experience perfect comfort with interior lighting. The ambient LED lighting includes footwell illumination and offers up to thirty attractive color options.")
-            .font(.custom("SKODANext-Regular", size: 18))
-            .foregroundStyle(.white)
     }
 }
 

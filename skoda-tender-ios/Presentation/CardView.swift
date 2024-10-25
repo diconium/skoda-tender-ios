@@ -34,7 +34,6 @@ struct CardView: View {
         }
         .disabled(!linkActive)
         .preferredColorScheme(.dark)
-        .navigationBarBackButtonHidden(true)
     }
 }
 
