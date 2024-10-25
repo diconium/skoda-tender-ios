@@ -42,8 +42,7 @@ struct CardListView: View {
     var body: some View {
         ScrollView(.horizontal) {
             HStack {
-                ForEach(viewModel.subscriptionList, id: \.self) {
-                    subscription in
+                ForEach(viewModel.subscriptionList, id: \.self) { subscription in
                     if let subscription {
                         CardView(subscription: subscription, linkActive: linkACtive)
                             .onAppear {
