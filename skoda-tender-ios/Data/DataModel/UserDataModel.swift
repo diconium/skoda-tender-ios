@@ -5,7 +5,6 @@
 //  Created by Fábio Barreiros on 23/10/2024.
 //
 
-
 // MARK: - UserDataModel
 
 /// A model representing user data with user ID, email, and name.

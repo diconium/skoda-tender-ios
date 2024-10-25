@@ -30,7 +30,7 @@ final class UserModel {
     /// - Parameter userDataModel: The data model containing user information.
     convenience init(userDataModel: UserDataModel) {
         self.init(id: UUID().hashValue,
-            email: userDataModel.email,
-            name: userDataModel.name)
+                  email: userDataModel.email,
+                  name: userDataModel.name)
     }
 }

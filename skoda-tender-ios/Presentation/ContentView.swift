@@ -13,25 +13,23 @@ struct ContentView: View {
     ]
 
     var body: some View {
-        TabView {
-            ForEach(items, id: \.self) { item in
-                VStack {
-                    Spacer()
-                    if item.icon == "car" {
+        NavigationStack {
+            TabView {
+                ForEach(items, id: \.self) { item in
+                    VStack {
+                        Spacer()
                         CarView()
+                        Divider()
+                        Spacer()
                     }
-                    if item.icon == "person" {
-                        ProfileView()
+                    .tabItem {
+                        Label(item.text,
+                              systemImage: item.icon)
                     }
-                    Divider()
-                    Spacer()
+                    .background(.neutral900)
                 }
-                .background(Color.neutral900)
-                .tabItem {
-                    Label(item.text,
-                          systemImage: item.icon)
-                }
-            }
+            }.preferredColorScheme(.dark)
+                .ignoresSafeArea(edges: .all)
         }
     }
 }

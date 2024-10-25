@@ -7,22 +7,20 @@ struct CardView: View {
     let imageHeight: CGFloat = 196
     let cornerRadius: CGFloat = 5
 
-    var title: String
-    var state: String
-    var expirationDate: String
-
+    @StateObject var viewModel = CarViewModel()
+    var subscription: SubscriptionModel
     @State var linkActive: Bool = true
 
     var body: some View {
-        NavigationLink(destination: ProfileView()) {
+        NavigationLink(destination: DetailView(subscription: subscription)) {
             VStack(alignment: .leading, spacing: 10) {
                 HStack {
-                    TimeleftHeaderBreakLineView(state: state, expirationDate: expirationDate)
+                    TimeleftHeaderBreakLineView(state: subscription.status, expirationDate: subscription.endDate?.description ?? "Test")
                     Spacer()
                     Image(.dotsVertical)
                 }
                 Spacer()
-                Text(title)
+                Text(subscription.name)
                     .font(.custom("SKODANext-Bold", size: 20))
                     .foregroundColor(SwiftUI.Color.white)
             }
@@ -34,6 +32,8 @@ struct CardView: View {
             .addBorder(.neutral800, width: 1, cornerRadius: cornerRadius)
             .background(.neutral800)
         }
+        .disabled(!linkActive)
+        .preferredColorScheme(.dark)
     }
 }
 
@@ -42,9 +42,15 @@ struct TimeleftHeaderBreakLineView: View {
     var expirationDate: String
 
     var body: some View {
+        let image: ImageResource = if state == "Activated" {
+            .ellpseElectric300
+        } else {
+            .ellipseRed
+        }
+
         VStack(alignment: .leading) {
             HStack {
-                Image(.ellipseRed)
+                Image(image)
                     .foregroundColor(.neutral200)
                 Text(state)
                     .font(.custom("SKODANext-Regular", size: 10))
@@ -56,8 +62,4 @@ struct TimeleftHeaderBreakLineView: View {
                 .foregroundStyle(.neutral200)
         }
     }
-}
-
-#Preview {
-    CardView(title: "Ambient Lighting", state: "EXPIRED", expirationDate: "on 22 Aug 2024")
 }

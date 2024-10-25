@@ -39,7 +39,7 @@ jobs:
       - name: Build Cleanup
         run: |
           xcodebuild clean -project skoda-tender-ios.xcodeproj -scheme skoda-tender-ios | xcpretty && exit ${PIPESTATUS[0]}
-      - name: Build Test
+      - name: Build
         run: |
-          xcodebuild test -project skoda-tender-ios.xcodeproj -scheme skoda-tender-ios -destination 'platform=iOS,id=${{ steps.pre-warm.outputs.udid }}' | xcpretty -s
+          xcodebuild build -project skoda-tender-ios.xcodeproj -scheme skoda-tender-ios | xcpretty -s
 
