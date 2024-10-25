@@ -1,5 +1,22 @@
 import SwiftUI
 
+struct SizePreferenceKey: PreferenceKey {
+    static var defaultValue: CGSize = .zero
+    static func reduce(value _: inout CGSize, nextValue _: () -> CGSize) {}
+}
+
+extension View {
+    func readSize(onChange: @escaping (CGSize) -> Void) -> some View {
+        background(
+            GeometryReader { geometryProxy in
+                Color.clear
+                    .preference(key: SizePreferenceKey.self, value: geometryProxy.size)
+            }
+        )
+        .onPreferenceChange(SizePreferenceKey.self, perform: onChange)
+    }
+}
+
 struct ProfileView: View {
     enum ViewState {
         case expired, active, new
@@ -10,7 +27,9 @@ struct ProfileView: View {
 
     @State private var showSheet = true
     @State private var sheetHeight: CGFloat = .zero
-    @StateObject var viewModel = ProfileListViewModel()
+    @State private var viewHeight: CGFloat = .zero
+    @StateObject var viewModel = CarViewModel()
+    @State private var bottomSheetHeight: CGFloat = 0
 
     var body: some View {
         HStack(alignment: .top) {
@@ -35,6 +54,9 @@ struct ProfileView: View {
                 Spacer()
             }
             .padding(.top, 10)
+            .readSize { calculatedHeight in
+                viewHeight = calculatedHeight.height
+            }
         }
         .sheet(isPresented: $showSheet) {
             VStack(alignment: .leading, spacing: 10) {
@@ -73,12 +95,12 @@ struct ProfileView: View {
                     .buttonStyle(.borderedProminent)
                     Spacer()
                 }
+                .presentationDetents([.height(UIScreen.main.bounds.height), .height(UIScreen.main.bounds.height - viewHeight)])
+                .presentationCornerRadius(20)
             }
             .padding(17)
             .padding(.top, 17)
             .background(.neutral800)
-            .presentationDetents([.medium, .large])
-            .presentationCornerRadius(20)
         }
         .background(.neutral900)
     }
@@ -123,21 +145,24 @@ struct PillsView: View {
     var body: some View {
         ScrollView(.horizontal) {
             HStack {
-                Button("Ambient Lighting") {
+                Button("Škoda Connect Services") {
                     print("Button pressed!")
                 }
+                .font(.custom("SKODANext-Light", size: 14))
                 .tint(.neutral800)
                 .controlSize(.small)
                 .buttonStyle(.borderedProminent)
-                Button("Ambient Lighting") {
+                Button("Infotainment Apps") {
                     print("Button pressed!")
                 }
+                .font(.custom("SKODANext-Light", size: 14))
                 .tint(.neutral900)
                 .controlSize(.small)
                 .buttonStyle(.borderedProminent)
-                Button("Ambient Lighting") {
+                Button("On Demand Services") {
                     print("Button pressed!")
                 }
+                .font(.custom("SKODANext-Light", size: 14))
                 .tint(.neutral900)
                 .controlSize(.small)
                 .buttonStyle(.borderedProminent)

@@ -34,6 +34,7 @@ struct CardView: View {
             .addBorder(.neutral800, width: 1, cornerRadius: cornerRadius)
             .background(.neutral800)
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
