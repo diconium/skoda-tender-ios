@@ -39,4 +39,7 @@ jobs:
       - name: Build Cleanup
         run: |
           xcodebuild clean -project skoda-tender-ios.xcodeproj -scheme skoda-tender-ios | xcpretty && exit ${PIPESTATUS[0]}
+      - name: Build
+        run: |
+          xcodebuild build -project skoda-tender-ios.xcodeproj -scheme skoda-tender-ios | xcpretty -s
 
