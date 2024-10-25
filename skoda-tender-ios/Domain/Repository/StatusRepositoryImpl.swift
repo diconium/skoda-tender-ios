@@ -8,6 +8,7 @@
 import Foundation
 
 // MARK: - StatusRepositoryImpl
+
 /// Implementation of the StatusRepository protocol.
 /// This class is responsible for fetching status data from the data source.
 struct StatusRepositoryImpl: StatusRepository {

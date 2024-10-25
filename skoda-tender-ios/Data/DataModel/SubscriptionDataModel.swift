@@ -5,7 +5,6 @@
 //  Created by Fábio Barreiros on 23/10/2024.
 //
 
-
 // MARK: - SubscriptionDataModel
 
 /// A model representing a subscription with its details.

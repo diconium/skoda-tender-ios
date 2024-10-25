@@ -8,7 +8,6 @@
 import Foundation
 import SwiftData
 
-
 /// A model representing a subscription with various attributes such as name, description, image link, length, price,
 /// included services, status, start date, and optional end date.
 @Model
@@ -56,18 +55,17 @@ final class SubscriptionModel {
     /// - Note: The `id` is generated using `UUID().hashValue`. The `startDate` is parsed using the format "yyyy-MM-dd'T'HH:mm:ss".
     ///         If `subscriptionDataModel.endDate` is provided, it is parsed similarly.
     init(subscriptionDataModel: SubscriptionDataModel) {
-        self.id = UUID().hashValue
-        self.name = subscriptionDataModel.name
-        self.sDescription = subscriptionDataModel.description
-        self.imageLink = subscriptionDataModel.imageLink
-        self.length = subscriptionDataModel.length
-        self.price = subscriptionDataModel.price
-        self.includedServices = subscriptionDataModel.includedServices
-        self.status = subscriptionDataModel.status
-        self.startDate = DateHelper.parse(date: subscriptionDataModel.startDate, format: "yyyy-MM-dd'T'HH:mm:ss")! //dont add a default value so we dont hide data errors, this should break on a nil value!
+        id = UUID().hashValue
+        name = subscriptionDataModel.name
+        sDescription = subscriptionDataModel.description
+        imageLink = subscriptionDataModel.imageLink
+        length = subscriptionDataModel.length
+        price = subscriptionDataModel.price
+        includedServices = subscriptionDataModel.includedServices
+        status = subscriptionDataModel.status
+        startDate = DateHelper.parse(date: subscriptionDataModel.startDate, format: "yyyy-MM-dd'T'HH:mm:ss")! // dont add a default value so we dont hide data errors, this should break on a nil value!
         if let subscriptionDataModelEndDate = subscriptionDataModel.endDate {
-
-            self.endDate = DateHelper.parse(date: subscriptionDataModelEndDate, format: "yyyy-MM-dd'T'HH:mm:ss")
+            endDate = DateHelper.parse(date: subscriptionDataModelEndDate, format: "yyyy-MM-dd'T'HH:mm:ss")
         }
     }
 }

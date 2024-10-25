@@ -8,7 +8,6 @@
 import Alamofire
 import Foundation
 
-
 // MARK: - StatusDataSource
 
 /// A data source protocol for the status of a car.

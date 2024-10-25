@@ -21,13 +21,11 @@ import Foundation
  Access each constant directly via its namespace, for example, `Constants.API.baseURL`.
  */
 enum Constants {
-
     enum API {
         static let baseURL = "http://skoda-backend-dev-lb-872235717.eu-central-1.elb.amazonaws.com/subscriptions/TMBJR0NX4RY183174/status"
     }
 
     enum Business {
-
         static let maxDaysUntilSubscriptionExpire = 30
     }
 

@@ -5,34 +5,32 @@ struct CarView: View {
     @StateObject var viewModel = CarViewModel()
 
     var body: some View {
-        NavigationStack {
-            ScrollView(.vertical) {
-                VStack {
-                    ZStack(alignment: .top) {
-                        VStack {
-                            HeaderView(title: viewModel.carModelList?.model ?? "")
-                            ConnectionView()
-                        }
-                        .padding(.horizontal, 20)
-                        .padding(.top, 10)
-                        Image(.car)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .clipShape(RoundedRectangle(cornerRadius: 25))
-                            .padding(0)
+        ScrollView(.vertical) {
+            VStack {
+                ZStack(alignment: .top) {
+                    VStack {
+                        HeaderView(title: viewModel.carModelList?.model ?? "")
+                        ConnectionView()
                     }
-                    CarInfoView(type: CarInfoView.ViewType.vehicle).padding(.horizontal, 17)
-                    CarInfoView(type: CarInfoView.ViewType.battery).padding(.horizontal, 17)
-                    CarInfoView(type: CarInfoView.ViewType.temperature).padding(.horizontal, 17)
-                    ServicesHeaderView().padding(.top, 10).padding(.horizontal, 17)
-                    CardListView(viewModel: viewModel, linkACtive: true).padding(.horizontal, 17)
+                    .padding(.horizontal, 20)
+                    .padding(.top, 10)
+                    Image(.car)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .clipShape(RoundedRectangle(cornerRadius: 25))
+                        .padding(0)
                 }
-                .task {
-                    viewModel.getCarInfo()
-                    viewModel.getSubscriptionsInfo()
-                }
-                .padding(0)
+                CarInfoView(type: CarInfoView.ViewType.vehicle).padding(.horizontal, 17)
+                CarInfoView(type: CarInfoView.ViewType.battery).padding(.horizontal, 17)
+                CarInfoView(type: CarInfoView.ViewType.temperature).padding(.horizontal, 17)
+                ServicesHeaderView().padding(.top, 10).padding(.horizontal, 17)
+                CardListView(viewModel: viewModel, linkACtive: true).padding(.horizontal, 17)
             }
+            .task {
+                viewModel.getCarInfo()
+                viewModel.getSubscriptionsInfo()
+            }
+            .padding(0)
         }
     }
 }

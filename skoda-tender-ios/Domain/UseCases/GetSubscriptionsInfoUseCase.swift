@@ -62,7 +62,6 @@ struct GetSubscriptionsInfoUseCase: GetSubscriptionsInfoProtocol {
         let nonNullEndDateModels = subscriptionDataModelList.filter { $0.endDate != nil && $0.status == "Activated" }
         let aboutToExpireModels = nonNullEndDateModels.filter {
             if let endDate = $0.endDate {
-
                 let daysUntilExpiring = DateHelper.timeElapsed(startDate: Date(), endDate: endDate, calendarComponent: .day) ?? 0
 
                 return daysUntilExpiring <= Constants.Business.maxDaysUntilSubscriptionExpire
@@ -71,7 +70,6 @@ struct GetSubscriptionsInfoUseCase: GetSubscriptionsInfoProtocol {
             return false
         }
         if let aboutToExpireModel = aboutToExpireModels.first {
-
             NotificationHelper.showUserNotification(title: "Subscription is about to expire", message: "Your subscription '\(aboutToExpireModel.name)' is about to expire, click here to renew it.")
         }
     }
