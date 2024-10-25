@@ -12,6 +12,7 @@
 		0463F1B52CC85D770013FA35 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 0463F1B42CC85D770013FA35 /* SDWebImageSwiftUI */; };
 		04C022832CCA98410066157A /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 04C022822CCA98410066157A /* FirebaseMessaging */; };
 		04C022872CCAA5DD0066157A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04C022862CCAA5DD0066157A /* GoogleService-Info.plist */; };
+		C63729BA2CCB89AD00A0DF14 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C63729B92CCB89AD00A0DF14 /* README.md */; };
 		C6D69D552CC7FBBE0048B5CA /* .swiftformat in Resources */ = {isa = PBXBuildFile; fileRef = C6D69D542CC7FBB80048B5CA /* .swiftformat */; };
 		C6D69D572CC7FC3A0048B5CA /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = C6D69D562CC7FC3A0048B5CA /* .gitignore */; };
 		C6D69D5D2CC84C0E0048B5CA /* SKODANext-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D69D5C2CC84C0E0048B5CA /* SKODANext-Regular.ttf */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		0463F1832CC85ADA0013FA35 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		04C022862CCAA5DD0066157A /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C63729B92CCB89AD00A0DF14 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C6A3B7D32CC7A344007E61C9 /* skoda-tender-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "skoda-tender-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6A3B7E62CC7A348007E61C9 /* skoda-tender-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "skoda-tender-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6A3B7F02CC7A348007E61C9 /* skoda-tender-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "skoda-tender-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,6 +151,7 @@
 		C6A3B7CA2CC7A344007E61C9 = {
 			isa = PBXGroup;
 			children = (
+				C63729B92CCB89AD00A0DF14 /* README.md */,
 				0463F1832CC85ADA0013FA35 /* .swiftlint.yml */,
 				C6D69D562CC7FC3A0048B5CA /* .gitignore */,
 				C6D69D542CC7FBB80048B5CA /* .swiftformat */,
@@ -325,6 +328,7 @@
 				04C022872CCAA5DD0066157A /* GoogleService-Info.plist in Resources */,
 				C6D69D6D2CC84C3F0048B5CA /* SKODANext-Black.ttf in Resources */,
 				C6D69D6B2CC84C3B0048B5CA /* SKODANext-BlackExpanded.ttf in Resources */,
+				C63729BA2CCB89AD00A0DF14 /* README.md in Resources */,
 				C6D69D692CC84C360048B5CA /* SKODANext-BlackItalic.ttf in Resources */,
 				C6D69D672CC84C300048B5CA /* SKODANext-Bold.ttf in Resources */,
 				C6D69D652CC84C2B0048B5CA /* SKODANext-BoldItalic.ttf in Resources */,
